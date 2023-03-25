@@ -7,6 +7,10 @@
 body{
     background-color: blue;
 }
+.flex-register{
+    display: flex;
+    justify-content: space-between;
+}
 .register-background-flex{
     display:flex;
     justify-content: space-between;
@@ -26,5 +30,38 @@ body{
 }
 
 .reading-image{
+    margin-top: 200px;
+}
+
+.register-text{
+    text-align: center;
+    margin-top: 15px;
+    color: white;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.register-input-color{
+    background-color: white;
+}
+
+.logo-input{
+ margin-top: 15px;
+}
+
+.img-input{
+height: 100px;
+height: 100px;
+border-radius: 50%;
+}
+
+.input-create{
     margin-top: 300px;
+    
+}
+
+.input-create-account{
+    
 }
