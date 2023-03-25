@@ -4,64 +4,21 @@
     padding: 0;
 }
 
-body{
-    background-color: blue;
-}
-.flex-register{
-    display: flex;
-    justify-content: space-between;
-}
-.register-background-flex{
-    display:flex;
-    justify-content: space-between;
-}
-.register-img-center{
-    background-color: blue;
-    background-size: cover;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.image-shape{
-    height: 200px;
-    width: 200px;
+.reading-child{
+    height: 150px;
+    width: 150px;
     border-radius: 50%;
+    margin: auto;
+    display: block;
+
+}
+.image-controller{
+    margin-top: 40%   
 }
 
-.reading-image{
-    margin-top: 200px;
-}
-
-.register-text{
+.sign-up-text{
     text-align: center;
-    margin-top: 15px;
-    color: white;
-    font-size: large;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 20px;
+    margin-top: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
-}
-
-.register-input-color{
-    background-color: white;
-}
-
-.logo-input{
- margin-top: 15px;
-}
-
-.img-input{
-height: 100px;
-height: 100px;
-border-radius: 50%;
-}
-
-.input-create{
-    margin-top: 300px;
-    
-}
-
-.input-create-account{
-    
 }
