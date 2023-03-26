@@ -42,7 +42,8 @@ body{
     gap:4rem;
     flex-direction: column;
     background: linear-gradient(to left , rgb(253, 227, 203),#ffffff);
-    padding: 20px;
+    padding: 30px;
+    border-radius: 5% 0% 0% 0%;
 }
 
 .right-section-head{
@@ -69,5 +70,20 @@ form{
 }
 
 .forgot-password{
-    color:yellow;
+    color:rgb(211,211,32);
+}
+
+
+@media only screen and (max-width: 578px){
+    .main-section{
+        flex-direction:column;
+    }
+
+    .right-section{
+        margin:0;
+        padding:10px;
+        border-top-right-radius:20px;
+        border-bottom-left-radius:0;
+        background-color:linear-gradient(to top,  rgb(253, 227, 203),#ffffff) ;
+    }
 }
