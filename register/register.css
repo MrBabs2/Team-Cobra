@@ -79,51 +79,60 @@ form{
 /* security checks for logging information  */ 
  .email-span{
     display:none;
-    font-size:5px;
-    color:red;
+    font-size:12px;
+    color:red !important;
     font-weight: 500;
+    font-style: italic;
+    
 }
 
 .lastname-span{
     display:none;
-    font-size:5px;
-    color:red;
+    font-size:12px;
+    color:red !important;
     font-weight: 500;
+    font-style: italic;
 }
 
 .first-span{
     display:none;
-    font-size:5px;
-    color:red;
+    font-size:12px;
+    color:red !important;
     font-weight: 500;
+    font-style:italic;
 } 
 
 .number-span{
     display:none;
     font-size:5px;
-    color:red;
-    font-weight: 500;
-}
-
-.studentsecondpassword-span{
-    display:none;
-    font-size:5px;
     color:red !important;
     font-weight: 500;
+    font-style: italic;
 }
+
+
 
 .studentnumber-span{
     display:none;
     font-size:5px;
-    color:red;
+    color:red !important;
     font-weight: 500;
+    font-style: italic;
 }
 
 .studentpassword-span{
     display:none;
     font-size:5px;
-    color:red;
+    color:red !important;
     font-weight: 500;
+    font-style: italic;
+}
+.studentsecondpassword-span{
+    display:none;
+    font-size:5px;
+    color:red !important;
+    font-weight: 500;
+    font-style: italic;
 }
 
 
@@ -132,6 +141,14 @@ form{
     font-size:5px;
     color:red;
     font-weight: 500; 
+    font-style: italic;
+}
+
+.dateofbirth-span{
+    display:none;
+    color:red;
+    font-weight: 500;
+    font-style: italic;
 }
 
 
