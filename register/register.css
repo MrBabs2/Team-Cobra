@@ -26,5 +26,48 @@ body{
 }
 
 .image-container{
-    
+    width:300px;
+    height:300px;
+    border-radius: 50%;
+    background-image: url(https://res.cloudinary.com/innov8it/image/upload/v1679762330/pexels-pixabay-261887_psu38z.jpg);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.right-section{
+    flex:3;
+    display:flex;
+    gap:4rem;
+    flex-direction: column;
+    background: linear-gradient(to left , rgb(253, 227, 203),#ffffff);
+    padding: 20px;
+}
+
+.right-section-head{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+}
+
+.library-logo{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background-color: black;
+}
+
+form{
+    display:inline;
+}
+
+.form-field{
+    width:30%;
+    padding: 0.7rem;
+    border-radius: 15px;
+}
+
+.forgot-password{
+    color:yellow;
 }
