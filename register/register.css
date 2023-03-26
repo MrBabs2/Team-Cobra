@@ -5,3 +5,26 @@
 }
 
 
+body{
+    background-color: #306789 !important;
+}
+
+.main-section{
+    height: 100vh;
+    display:flex;
+    gap:2rem
+}
+
+.register-left-section{
+    flex:1;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    gap:0.5 rem;
+    color:#fff
+}
+
+.image-container{
+    
+}
