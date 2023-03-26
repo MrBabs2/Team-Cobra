@@ -39,13 +39,15 @@ body{
 .right-section{
     flex:3;
     display:flex;
-    gap:4rem;
+    gap:1rem;
     flex-direction: column;
     background: linear-gradient(to left , rgb(253, 227, 203),#ffffff);
-    padding: 20px;
+    padding: 30px;
     border-radius: 5% 0% 0% 0%;
     height: 100vh;
+    
 }
+
 
 .right-section-head{
     display:flex;
@@ -54,8 +56,8 @@ body{
 }
 
 .library-logo{
-    width:100px;
-    height:100px;
+    width:50px;
+    height:50px;
     border-radius:50%;
     background-color: black;
 }
@@ -74,10 +76,65 @@ form{
     color:rgb(211,211,32);
 }
 
-/* security checks for logging information  */
-.email-span{
+/* security checks for logging information  */ 
+ .email-span{
     display:none;
+    font-size:5px;
+    color:red;
+    font-weight: 500;
 }
+
+.lastname-span{
+    display:none;
+    font-size:5px;
+    color:red;
+    font-weight: 500;
+}
+
+.first-span{
+    display:none;
+    font-size:5px;
+    color:red;
+    font-weight: 500;
+} 
+
+.number-span{
+    display:none;
+    font-size:5px;
+    color:red;
+    font-weight: 500;
+}
+
+.studentsecondpassword-span{
+    display:none;
+    font-size:5px;
+    color:red !important;
+    font-weight: 500;
+}
+
+.studentnumber-span{
+    display:none;
+    font-size:5px;
+    color:red;
+    font-weight: 500;
+}
+
+.studentpassword-span{
+    display:none;
+    font-size:5px;
+    color:red;
+    font-weight: 500;
+}
+
+
+.studentmain-span{
+    display:none;
+    font-size:5px;
+    color:red;
+    font-weight: 500; 
+}
+
+
 
 
 
