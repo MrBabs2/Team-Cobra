@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Bootstrap addition -->
    <link rel="stylesheet" href="./css/bootstrap.min.css">
    <link rel="stylesheet" href="../register/register.css">
+        <!-- font awesome -->
+   <link rel="stylesheet" href="./">
     <title>Library Management System</title>
 </head>
 <body>
@@ -69,9 +72,11 @@
                                   </div>
                                   <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="inputfirstpassword" placeholder="Enter your password">
+                                    <input type="password" class="form-control" id="inputfirstpassword" placeholder="Enter your password" ><i class="fa fa-eye"></i> 
+                                   
                                     <span class="studentpassword-span">Your Password cannot be empty</span>
                                   </div>
+
                                   <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Confirm Password</label>
                                     <input type="password" class="form-control" id="inputconfirmpassword" placeholder="Please confirm password">
@@ -97,7 +102,10 @@
                                         <button type="submit" class="btn btn-warning form-control btn-outline"> Create Account</button>
                                     </div>
                                     <div class="col-md-5">
-                                        <button type="submit" class="btn btn-outline-dark form-control"> Sign-in to goolge</button>
+                                        <button type="submit" class="btn btn-outline-dark form-control">
+                                          <img src="./Google__G__Logo.svg" class="google-image">
+                                          Sign-in to goolge</button>
+                                      
                                     </div>
                                   </div>
                               </form>

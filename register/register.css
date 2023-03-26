@@ -25,6 +25,8 @@ body{
     color:#fff
 }
 
+/* 
+the images are hosted on cloudinary  */
 .image-container{
     width:300px;
     height:300px;
@@ -152,7 +154,10 @@ form{
 }
 
 
-
+.google-image{
+    height: 25px;
+    width:15px
+}
 
 
 /* media queries for responsiveness */
