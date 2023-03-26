@@ -42,8 +42,9 @@ body{
     gap:4rem;
     flex-direction: column;
     background: linear-gradient(to left , rgb(253, 227, 203),#ffffff);
-    padding: 30px;
+    padding: 20px;
     border-radius: 5% 0% 0% 0%;
+    height: 100vh;
 }
 
 .right-section-head{
@@ -73,7 +74,14 @@ form{
     color:rgb(211,211,32);
 }
 
+/* security checks for logging information  */
+.email-span{
+    display:none;
+}
 
+
+
+/* media queries for responsiveness */
 @media only screen and (max-width: 578px){
     .main-section{
         flex-direction:column;
