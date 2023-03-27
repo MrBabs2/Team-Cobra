@@ -2,5 +2,20 @@ body{
     background-image: url(home-background.jpg);
     /* background-color: #0066ff;
     backg; */
-    
+
  }
+
+ .navbar{
+    padding: 20px 70px;
+}
+.navbar-brand{
+    color: #ed8e00;
+}
+
+.nav-link{
+    margin-right: 70px;
+    font-weight: 700;
+    font-size: 0.8em;
+}
+.navbar-nav .nav-link.active{
+    color: rgb(1, 19, 82);
