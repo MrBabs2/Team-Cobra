@@ -19,3 +19,23 @@ body{
 }
 .navbar-nav .nav-link.active{
     color: rgb(1, 19, 82);
+}
+
+.user-profile{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1.5px solid rgb(1, 19, 82);
+    padding: 5px;
+    text-align: center;
+    color: rgb(1, 19, 82);
+}
+
+.form{
+    margin-top: 50px;
+    margin-right: 50px;
+}
+.search-btn{
+    margin-left: -6px;
+    
+}
