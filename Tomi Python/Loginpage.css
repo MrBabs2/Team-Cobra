@@ -5,6 +5,7 @@
     background-size: 50% 50%;
 
 } */
+
 .background{
     min-height: calc(100vh - 80px);
     background: url("background-img-1.jpg") center/cover no-repeat ;
