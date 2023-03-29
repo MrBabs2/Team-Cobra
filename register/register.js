@@ -4,13 +4,27 @@
  const firstnamecheck = document.querySelector(".first-span");
  const lastNameCheck = document.querySelector(".lastname-span");
  const emailCheck = document.querySelector(".email-span");
+ const phonenumber = document.querySelector(".number-span");
+ const studentNumberSelector = document.querySelector(".studentnumber-span");
+ const dateOfBirthChecker = document.querySelector(".dateofbirth-span");
+ const firstPasswordLength = document.querySelector(".studentpassword-span");
+ const secondPasswordlength =document.querySelector(".studentsecondpassword-span")
+ const passwordconfirmer = document.querySelector(".studentmain-span")
 
- // regex expression for firstname and lastname
+ // regex tester for firstname and lastname
  const firstnamepattern = /^[a-zA-Z]{6,10}$/ 
- // regex expression for email 
+ // regex tester for email 
  const emailchecker = /^.{4,}$/
-
- //regex expression for the email address 
+//regex expression for phone number
+const phonenumberchecker = /^[0-9]{6,}$/ 
+//regex expression for studentnumber 
+const studentNumber = /^[0-9]{0,8}$/ 
+//regex pattern for date of birth
+const DOB = /^.{1,12}$/ 
+//regex pattern for password 
+const firstPassword = /^.{1,}$/
+//regex pattern for confirmingpassword 
+const secondpassword = /^.{1,}$/
 
 
 //  setting the GEOlocation API
@@ -20,6 +34,8 @@ if(navigator.geolocation)
     },function(){
         alert("Your position could not be derived")
     })
+
+
 // setting event listeners 
  //adding prevent default to the form to prevent its default behavior
  //seting validation for the input fields in the form 
@@ -32,10 +48,23 @@ form.addEventListener("submit",(e)=>{e.preventDefault()
     else{
         firstnamecheck.style.display = "inline" 
     }
-     //regex expression using ternary operator for the lastname value 
+     //regex expression using ternary operator for the 
+     
+    //  regex expression for lastname value 
     firstnamepattern.test(form.inputLastName.value)? lastNameCheck.style.display = "none"  : lastNameCheck.style.display = "inline"
     //regex expression for testing emails
     emailchecker.test(form.inputemail.value)?emailCheck.style.display="none":emailCheck.style.display="inline"
+    //regex expression for phone number
+    phonenumberchecker.test(form.inputPhonenumber.value)? phonenumber.style.display = "none": phonenumber.style.display ="inline"
+    //regex expression for testing student number 
+    studentNumber.test(form.inputStudentIDnumber.value) ? studentNumberSelector.style.display = "none" :studentNumberSelector.style.display = "inline" 
+    //regex expression for Date of Birth 
+    DOB.test(form.inputdateofbirth.value)? dateOfBirthChecker.style.display ="none": dateOfBirthChecker.style.display ="inline"
+    //regex expression for first and second password 
+    firstPassword.test(form.inputfirstpassword.value) ? firstPasswordLength.style.display = "none": firstPasswordLength.style.display = "inline"
+    secondPasswordlength.test(form.inputconfirmpassword.value) ? secondPasswordlength.style.display = "none": secondPasswordlength.style.display = "inline"
+    //testing for confirming both first and second password 
+    form.inputfirstpassword.value !== form.inputconfirmpassword.value ? passwordconfirmer.style.display = "inline"
 })
 
 
