@@ -41,7 +41,7 @@
                             <h2>Create Account</h2>
                             <form class="row g-3" id="form_controller">
                                 <div class="col-md-6">
-                                  <label for="inputEmail4" class="form-label">FirstName</label>
+                                  <label for="firstname" class="form-label">FirstName</label>
                                   <input type="text" class="form-control" id="firstname" placeholder="Enter your first name" required>
                                   <span class="first-span">Your First name cannot be Less than 1 letter</span>
                                 </div>
@@ -51,17 +51,17 @@
                                   <span class="lastname-span">Your Lastname cannot be Less than 1 letter</span>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputEmail" class="form-label">Email</label>
+                                    <label for="inputemail" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="inputemail" placeholder="Enter your email address" required>
                                     <span class="email-span">Your Email cannot be Empty</span>
                                   </div>
                                   <div class="col-md-6">
                                     <label for="inputPhonenumber" class="form-label">PhoneNumber</label>
                                     <input type="text" class="form-control" id="inputPhonenumber" placeholder="Enter your contact number" required>
-                                    <span class="number-span">Your Phonenumber cannot be less than 5 digits </span>
+                                    <span class="number-span">Your Phonenumber must be a number and cannot be less than 5 digits </span>
                                   </div>
                                   <div class="col-md-6">
-                                    <label for="inputStudentNumber" class="form-label">Student ID Number</label>
+                                    <label for="inputStudentIDNumber" class="form-label">Student ID Number</label>
                                     <input type="text" class="form-control" id="inputStudentIDnumber" placeholder="Enter your StudentIDnumber" required>
                                     <span class="studentnumber-span">Your student Number can only be Number and 8 characters long</span>
                                   </div>
@@ -71,14 +71,13 @@
                                     <span class="dateofbirth-span">Your Date of Birth cannot be empty</span>
                                   </div>
                                   <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Password</label>
+                                    <label for="inputfirstpassword" class="form-label">Password</label>
                                     <input type="password" class="form-control" id="inputfirstpassword" placeholder="Enter your password" ><i class="fa fa-eye"></i> 
-                                   
                                     <span class="studentpassword-span">Your Password cannot be empty</span>
                                   </div>
 
                                   <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Confirm Password</label>
+                                    <label for="inputconfirmpassword" class="form-label">Confirm Password</label>
                                     <input type="password" class="form-control" id="inputconfirmpassword" placeholder="Please confirm password">
                                     <span class="studentsecondpassword-span">Your Password cannot be empty</span>
                                     <span class="studentmain-span">Your Password does not match</span>

@@ -12,19 +12,22 @@
  const passwordconfirmer = document.querySelector(".studentmain-span")
 
  // regex tester for firstname and lastname
- const firstnamepattern = /^[a-zA-Z]{6,10}$/ 
+ const firstnamepattern = /^[a-zA-Z]{1,}$/ 
  // regex tester for email 
  const emailchecker = /^.{4,}$/
-//regex expression for phone number
+//regex tester for phone number
 const phonenumberchecker = /^[0-9]{6,}$/ 
-//regex expression for studentnumber 
+//regex tester for studentnumber 
 const studentNumber = /^[0-9]{0,8}$/ 
-//regex pattern for date of birth
+//regex testerfor date of birth
 const DOB = /^.{1,12}$/ 
-//regex pattern for password 
+//regex tester for password 
 const firstPassword = /^.{1,}$/
-//regex pattern for confirmingpassword 
-const secondpassword = /^.{1,}$/
+//regex tester for confirmingpassword 
+const secondpasswordChecker = /^.{1,}$/
+
+
+
 
 
 //  setting the GEOlocation API
@@ -55,17 +58,50 @@ form.addEventListener("submit",(e)=>{e.preventDefault()
     //regex expression for testing emails
     emailchecker.test(form.inputemail.value)?emailCheck.style.display="none":emailCheck.style.display="inline"
     //regex expression for phone number
-    phonenumberchecker.test(form.inputPhonenumber.value)? phonenumber.style.display = "none": phonenumber.style.display ="inline"
+    phonenumberchecker.test(Number(form.inputPhonenumber.value))? phonenumber.style.display = "none": phonenumber.style.display ="inline"
     //regex expression for testing student number 
     studentNumber.test(form.inputStudentIDnumber.value) ? studentNumberSelector.style.display = "none" :studentNumberSelector.style.display = "inline" 
     //regex expression for Date of Birth 
     DOB.test(form.inputdateofbirth.value)? dateOfBirthChecker.style.display ="none": dateOfBirthChecker.style.display ="inline"
     //regex expression for first and second password 
     firstPassword.test(form.inputfirstpassword.value) ? firstPasswordLength.style.display = "none": firstPasswordLength.style.display = "inline"
-    secondPasswordlength.test(form.inputconfirmpassword.value) ? secondPasswordlength.style.display = "none": secondPasswordlength.style.display = "inline"
+    // for testing the password length 
+    secondpasswordChecker.test(form.inputconfirmpassword.value) ? secondPasswordlength.style.display = "none": secondPasswordlength.style.display = "inline"
     //testing for confirming both first and second password 
-    form.inputfirstpassword.value !== form.inputconfirmpassword.value ? passwordconfirmer.style.display = "inline"
+    form.inputfirstpassword.value !== form.inputconfirmpassword.value ? passwordconfirmer.style.display = "inline":passwordconfirmer.style.display = "none"
 })
+
+
+
+//setting of data from the user input for local storage 
+const localFirstName= form.firstname.value.trim();  
+const localSecondName =form.inputLastName.value.trim();
+const localEmail = form.inputemail.value.trim()
+const localStudentIdNumber = form.inputStudentIDnumber.value.trim()
+const localfirstpassword = form.inputfirstpassword.value.trim()
+const localsecondpasssword = form.inputconfirmpassword.value.trim()
+
+//setting up local storage using local storage API 
+//setting up the object for obtaining data from users 
+ let userInput = {
+    "firstname":localFirstName,
+    "secondname": localSecondName,
+    "email":localEmail,
+    "student Number":localStudentIdNumber,
+    "firstpassword":localfirstpassword,
+    "secondpassword":localsecondpasssword
+ }
+
+ //stringify the localstorage API data to store in browser
+ let inputs = JSON.stringify(userInput)
+
+ //using the localstorage function to setItems in the local storage 
+function settingLocalStorage(){
+    return localStorage.setItem("itemsStr", inputs)
+}
+
+// using conditional statements to set local storage 
+settingLocalStorage()
 
 
 
