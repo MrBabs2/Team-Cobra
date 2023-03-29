@@ -2,6 +2,7 @@
 //  DOM element Manipulations 
  const form=document.getElementById("form_controller");
  const firstnamecheck = document.querySelector(".first-span")
+ const lastNameCheck = document.querySelector(".lastname-span")
 
  // regex expression for firstname
  const firstnamepattern = /^[a-zA-Z]{6,10}$/  
@@ -24,6 +25,8 @@ form.addEventListener("submit",(e)=>{e.preventDefault()
     else{
         firstnamecheck.style.display = "inline" 
     }
+     //regex expression using ternary operator for the lastname value 
+    firstnamepattern.test(form.inputLastName.value)? lastNameCheck.style.display = "none"  : lastNameCheck.style.display = "inline"
 })
 
 
