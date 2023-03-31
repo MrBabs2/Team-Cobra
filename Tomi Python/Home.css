@@ -5,7 +5,12 @@ body{
 
  }
 
- .navbar{
+.navbar-nav{
+    margin-right: -980px;
+}
+
+
+.navbar{
     padding: 20px 70px;
 }
 .navbar-brand{
@@ -13,7 +18,7 @@ body{
 }
 
 .nav-link{
-    margin-right: 70px;
+    margin-right: 50px;
     font-weight: 700;
     font-size: 0.8em;
 }
