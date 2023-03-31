@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="657421760957-1nva6999ecvud2s2vav67vfskesj0hdi.apps.googleusercontent.com">
      <!-- Bootstrap addition -->
    <link rel="stylesheet" href="./css/bootstrap.min.css">
    <link rel="stylesheet" href="../register/register.css">
@@ -42,27 +43,27 @@
                             <form class="row g-3" id="form_controller">
                                 <div class="col-md-6">
                                   <label for="firstname" class="form-label">FirstName</label>
-                                  <input type="text" class="form-control" id="firstname" placeholder="Enter your first name" required>
+                                  <input type="text" class="form-control" id="firstname" placeholder="Enter your first name" >
                                   <span class="first-span">Your First name cannot be Less than 1 letter</span>
                                 </div>
                                 <div class="col-md-6">
                                   <label for="inputlastname" class="form-label">LastName</label>
-                                  <input type="text" class="form-control" id="inputLastName" placeholder="Enter your last name" required >
+                                  <input type="text" class="form-control" id="inputLastName" placeholder="Enter your last name">
                                   <span class="lastname-span">Your Lastname cannot be Less than 1 letter</span>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputemail" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="inputemail" placeholder="Enter your email address" required>
+                                    <input type="email" class="form-control" id="inputemail" placeholder="Enter your email address">
                                     <span class="email-span">Your Email cannot be Empty</span>
                                   </div>
                                   <div class="col-md-6">
                                     <label for="inputPhonenumber" class="form-label">PhoneNumber</label>
-                                    <input type="text" class="form-control" id="inputPhonenumber" placeholder="Enter your contact number" required>
+                                    <input type="text" class="form-control" id="inputPhonenumber" placeholder="Enter your contact number">
                                     <span class="number-span">Your Phonenumber must be a number and cannot be less than 5 digits </span>
                                   </div>
                                   <div class="col-md-6">
                                     <label for="inputStudentIDNumber" class="form-label">Student ID Number</label>
-                                    <input type="text" class="form-control" id="inputStudentIDnumber" placeholder="Enter your StudentIDnumber" required>
+                                    <input type="text" class="form-control" id="inputStudentIDnumber" placeholder="Enter your StudentIDnumber">
                                     <span class="studentnumber-span">Your student Number can only be Number and 8 characters long</span>
                                   </div>
                                   <div class="col-md-6">
@@ -72,7 +73,7 @@
                                   </div>
                                   <div class="col-md-6">
                                     <label for="inputfirstpassword" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="inputfirstpassword" placeholder="Enter your password" ><i class="fa fa-eye"></i> 
+                                    <input type="password" onChange ="settingLocalStorage()"class="form-control" id="inputfirstpassword" placeholder="Enter your password" ><i class="fa fa-eye"></i> 
                                     <span class="studentpassword-span">Your Password cannot be empty</span>
                                   </div>
 
@@ -101,10 +102,11 @@
                                         <button type="submit" class="btn btn-warning form-control btn-outline"> Create Account</button>
                                     </div>
                                     <div class="col-md-5">
-                                        <button type="submit" class="btn btn-outline-dark form-control">
+                                        <button type="submit" class="btn btn-outline-dark form-control g-signin2" data-onsuccess="onSignIn" id="login-google">
                                           <img src="./Google__G__Logo.svg" class="google-image">
                                           Sign-in to goolge</button>
-                                      
+                                       
+          
                                     </div>
                                   </div>
                               </form>
@@ -118,5 +120,6 @@
         </div>
     </div>
     <script src="./register.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     </body>      
 </html>

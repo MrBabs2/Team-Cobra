@@ -1,4 +1,6 @@
  "use strict"
+ localStorage.clear()
+ 
 //  DOM element Manipulations 
  const form=document.getElementById("form_controller");
  const firstnamecheck = document.querySelector(".first-span");
@@ -10,6 +12,8 @@
  const firstPasswordLength = document.querySelector(".studentpassword-span");
  const secondPasswordlength =document.querySelector(".studentsecondpassword-span")
  const passwordconfirmer = document.querySelector(".studentmain-span")
+ const googlesignIn = document.querySelector(".g-signin2")
+
 
  // regex tester for firstname and lastname
  const firstnamepattern = /^[a-zA-Z]{1,}$/ 
@@ -25,10 +29,6 @@ const DOB = /^.{1,12}$/
 const firstPassword = /^.{1,}$/
 //regex tester for confirmingpassword 
 const secondpasswordChecker = /^.{1,}$/
-
-
-
-
 
 //  setting the GEOlocation API
 if(navigator.geolocation)
@@ -72,7 +72,7 @@ form.addEventListener("submit",(e)=>{e.preventDefault()
 })
 
 
-
+function settingLocalStorage(){
 //setting of data from the user input for local storage 
 const localFirstName= form.firstname.value.trim();  
 const localSecondName =form.inputLastName.value.trim();
@@ -81,27 +81,39 @@ const localStudentIdNumber = form.inputStudentIDnumber.value.trim()
 const localfirstpassword = form.inputfirstpassword.value.trim()
 const localsecondpasssword = form.inputconfirmpassword.value.trim()
 
+//using the reset function to clear fields 
+console.log(localFirstName)
+
 //setting up local storage using local storage API 
 //setting up the object for obtaining data from users 
- let userInput = {
+ let userInput = [{
     "firstname":localFirstName,
     "secondname": localSecondName,
     "email":localEmail,
     "student Number":localStudentIdNumber,
     "firstpassword":localfirstpassword,
     "secondpassword":localsecondpasssword
- }
+ }]
 
  //stringify the localstorage API data to store in browser
  let inputs = JSON.stringify(userInput)
 
  //using the localstorage function to setItems in the local storage 
-function settingLocalStorage(){
+
     return localStorage.setItem("itemsStr", inputs)
 }
+console.log("input"+userInput)
+// using conditional statements to set local storage
+//looping over the userinput to reset values put  
+if(userInput){
+    settingLocalStorage()
+    
+}
 
-// using conditional statements to set local storage 
-settingLocalStorage()
+
+//adding google sign up using google authorization and authentication API  for signing in and signing out  
+
+//please when hosting on google sign up , do not forget to rework your domain setting in your goolge sign up 
 
 
 
