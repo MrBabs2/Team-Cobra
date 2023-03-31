@@ -58,3 +58,54 @@ body{
        scroll-behavior: smooth;
        margin-bottom: 20px;
      }
+
+     .card{
+        margin-right:unset ;
+      }
+      .cards{
+        flex: 0 0 auto;
+        width: 20%;
+        height: 5%;
+        margin-right: 20px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        text-align: center;
+        padding: 20px;
+        /* font-size: 30px; */
+        line-height: 20px;
+        scroll-snap-align: start;
+      }
+      .card-img-top{
+        width: 200px;
+      }
+      
+      .slider-controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+      }
+      
+      .slider-arrow {
+        cursor: pointer;
+        font-size: 30px;
+        padding: 0 10px;
+        color: #888;
+      }
+      
+      .slider-arrow:hover {
+        color: #555;
+      }
+      
+      .slider-arrow-left {
+        margin-right: auto;
+      }
+      
+      .slider-line {
+        height: 2px;
+        width: 30%;
+        background-color: #ccc;
+        margin-top: -30px;
+        border-radius: 2px;
+      }
+      
+      
