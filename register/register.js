@@ -10,9 +10,13 @@
  const studentNumberSelector = document.querySelector(".studentnumber-span");
  const dateOfBirthChecker = document.querySelector(".dateofbirth-span");
  const firstPasswordLength = document.querySelector(".studentpassword-span");
- const secondPasswordlength =document.querySelector(".studentsecondpassword-span")
- const passwordconfirmer = document.querySelector(".studentmain-span")
- const googlesignIn = document.querySelector(".g-signin2")
+ const secondPasswordlength =document.querySelector(".studentsecondpassword-span");
+ const passwordconfirmer = document.querySelector(".studentmain-span");
+ const googlesignIn = document.querySelector(".g-signin2");
+ const terms = document.querySelector(".terms");
+ const popUp = document.querySelector(".popup-wrapper");
+ const popClose = document.querySelector(".popup-close")
+ 
 
  //  setting the GEOlocation API
 if(navigator.geolocation)
@@ -66,7 +70,8 @@ function TestRegexPatterns(){
  //adding regex expression to the code 
 form.addEventListener("submit",(e)=>{e.preventDefault()
     TestRegexPatterns()
-    
+
+
     return form.reset()
 })
 
@@ -80,9 +85,6 @@ const localEmail = form.inputemail.value.trim()
 const localStudentIdNumber = form.inputStudentIDnumber.value.trim()
 const localfirstpassword = form.inputfirstpassword.value.trim()
 const localsecondpasssword = form.inputconfirmpassword.value.trim()
-
-//using the reset function to clear fields 
-// console.log(localFirstName)
 
 //setting up local storage using local storage API 
 //setting up the object for obtaining data from users 
@@ -104,20 +106,21 @@ const localsecondpasssword = form.inputconfirmpassword.value.trim()
 
    
 }
-// console.log("input"+userInput)
-// using conditional statements to set local storage
 //looping over the userinput to reset values put  
 
 settingLocalStorage()
 
-// reset the form 
-    
-function resetingForm(){
-   
- 
-}
 
-resetingForm()
+//setting up a pop-up modal for the read here section 
+terms.addEventListener("click", ()=>{
+    popUp.style.display ="block"
+})
+
+//closing the popup bar by using the X element 
+
+popClose.addEventListener("click", ()=>{
+    popUp.style.display ="none"
+})
 
 
 //adding google sign up using google authorization and authentication API  for signing in and signing out  

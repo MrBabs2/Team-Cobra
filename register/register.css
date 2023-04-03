@@ -159,6 +159,29 @@ form{
     width:15px
 }
 
+.popup-wrapper{
+    background:#306789 ;
+    position:fixed;
+    top:0%;
+    left:30%;
+    width:100vh;
+    height: 100vh;
+    display:none;
+   
+}
+.policies{
+    text-align: center;
+    color:white;
+}
+.checkout{
+    text-align:center;
+    color:white;
+
+}
+.popup-close{
+    font-size: 70px;
+    color:white;
+}
 
 /* media queries for responsiveness */
 @media only screen and (max-width: 578px){
