@@ -1,6 +1,6 @@
  "use strict"
  localStorage.clear()
- 
+
 //  DOM element Manipulations 
  const form=document.getElementById("form_controller");
  const firstnamecheck = document.querySelector(".first-span");
@@ -14,6 +14,13 @@
  const passwordconfirmer = document.querySelector(".studentmain-span")
  const googlesignIn = document.querySelector(".g-signin2")
 
+ //  setting the GEOlocation API
+if(navigator.geolocation)
+navigator.geolocation.getCurrentPosition(function(){
+    console.log("Your Position has been dervied ")
+},function(){
+    alert("Your position could not be derived")
+})
 
  // regex tester for firstname and lastname
  const firstnamepattern = /^[a-zA-Z]{1,}$/ 
@@ -30,29 +37,10 @@ const firstPassword = /^.{1,}$/
 //regex tester for confirmingpassword 
 const secondpasswordChecker = /^.{1,}$/
 
-//  setting the GEOlocation API
-if(navigator.geolocation)
-    navigator.geolocation.getCurrentPosition(function(){
-        console.log("Your Position has been dervied ")
-    },function(){
-        alert("Your position could not be derived")
-    })
-
-
-// setting event listeners 
- //adding prevent default to the form to prevent its default behavior
- //seting validation for the input fields in the form 
- //adding regex expression to the code 
-form.addEventListener("submit",(e)=>{e.preventDefault()
-    // regex expression for firstname
-    if(firstnamepattern.test(form.firstname.value)){
-       firstnamecheck.style.display = "none" 
-    }
-    else{
-        firstnamecheck.style.display = "inline" 
-    }
+function TestRegexPatterns(){
+// regex expression for firstname
      //regex expression using ternary operator for the 
-     
+     firstnamepattern.test(form.firstname.value) ?  firstnamecheck.style.display = "none" :firstnamecheck.style.display = "inline" ;
     //  regex expression for lastname value 
     firstnamepattern.test(form.inputLastName.value)? lastNameCheck.style.display = "none"  : lastNameCheck.style.display = "inline"
     //regex expression for testing emails
@@ -69,7 +57,19 @@ form.addEventListener("submit",(e)=>{e.preventDefault()
     secondpasswordChecker.test(form.inputconfirmpassword.value) ? secondPasswordlength.style.display = "none": secondPasswordlength.style.display = "inline"
     //testing for confirming both first and second password 
     form.inputfirstpassword.value !== form.inputconfirmpassword.value ? passwordconfirmer.style.display = "inline":passwordconfirmer.style.display = "none"
+}
+
+
+// setting event listeners 
+ //adding prevent default to the form to prevent its default behavior
+ //seting validation for the input fields in the form 
+ //adding regex expression to the code 
+form.addEventListener("submit",(e)=>{e.preventDefault()
+    TestRegexPatterns()
+    
+    return form.reset()
 })
+
 
 
 function settingLocalStorage(){
@@ -82,7 +82,7 @@ const localfirstpassword = form.inputfirstpassword.value.trim()
 const localsecondpasssword = form.inputconfirmpassword.value.trim()
 
 //using the reset function to clear fields 
-console.log(localFirstName)
+// console.log(localFirstName)
 
 //setting up local storage using local storage API 
 //setting up the object for obtaining data from users 
@@ -101,14 +101,23 @@ console.log(localFirstName)
  //using the localstorage function to setItems in the local storage 
 
     return localStorage.setItem("itemsStr", inputs)
+
+   
 }
-console.log("input"+userInput)
+// console.log("input"+userInput)
 // using conditional statements to set local storage
 //looping over the userinput to reset values put  
-if(userInput){
-    settingLocalStorage()
+
+settingLocalStorage()
+
+// reset the form 
     
+function resetingForm(){
+   
+ 
 }
+
+resetingForm()
 
 
 //adding google sign up using google authorization and authentication API  for signing in and signing out  
