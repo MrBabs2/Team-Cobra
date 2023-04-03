@@ -27,10 +27,12 @@ html, body{
     z-index: 3;
 }
 .navbar-brand{
+    margin-right: -450px;
     color: #ed8e00;
+    font-size: 01.8em;
 }
 .navbar-nav{
-    margin-right: -700px;
+    margin-right: -895px;
     margin-left: 29em;
 }
 .nav-link{
