@@ -1,0 +1,139 @@
+body{
+    background: linear-gradient(to bottom,rgba(0,0,0,0.5),rgb(28, 28, 65)),url(home-background.jpg) ;
+    width: 100%;
+    height: 100%;
+ }
+
+.navbar-nav{
+    margin-right: -780px;ß
+}
+
+.navbar{
+    padding: 20px 70px;
+}
+
+.navbar-brand{
+  font-size: 01.8em;
+    color: #ed8e00;
+}
+
+.nav-link{
+    margin-right: 50px;
+    font-weight: 700;
+    font-size: 0.8em;
+}
+.navbar-nav .nav-link.active{
+    color: rgb(1, 19, 82);
+}
+
+.user-profile{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1.5px solid rgb(1, 19, 82);
+    padding: 5px;
+    text-align: center;
+    color: rgb(1, 19, 82);
+}
+
+.form{
+    margin-top: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+}
+.search-btn{
+    margin-left: -6px;
+}
+.section-1{
+    margin-top: 50px;
+   margin-bottom: 50px;}
+   
+   .cards {
+    background-color: #fff;
+    padding: 20px;
+    width: 100%;
+  }
+  .cards .book-img img {
+    width: 90px;
+    height: 100px;
+  }
+  .borrow-btn {
+    background-color: #ed8e00;
+    font-weight: 600;
+    font-size: 19px;
+    color: #fff;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 5px;
+    flex-grow: 2;
+    text-transform: uppercase;
+  }
+  .btn-wrap {
+    display: flex;
+    align-items: center;
+  }
+  /* .swiper-slides{
+  width: 80%;
+  } */
+  .mySwiper {
+    width: 80%;
+    overflow: hidden;
+  }
+  
+  /* .swiper-slide {
+    background: #fff;
+    color: #000;
+    text-align: center;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+  
+  .swiper-scrollbar {
+    background: white;
+    width: 30% !important;
+    height: 5px !important;
+    overflow: hidden !important;
+    opacity: 1 !important;
+    margin: ;500px
+    transform: translateX(-50%);
+    left: 50% !important;
+  }
+  
+  .swiper-scrollbar:hover {
+    opacity: 1;
+  }
+  .swiper-inner {
+    position: relative;
+    margin: auto;
+    --swiper-scrollbar-top: 95%;
+    --swiper-scrollbar-bottom: 4px;
+    --swiper-scrollbar-left: 50%;
+    --swiper-scrollbar-right: 50%;
+    --swiper-scrollbar-bg-color: #fff;
+    --swiper-scrollbar-drag-bg-color: #ed8e00;
+    --swiper-scrollbar-size: 2px;
+    --swiper-scrollbar-width: 10px;
+    --swiper-theme-color:#fff;
+  }
+  .swiper-container {
+    width: 80%;
+    height: 400px;
+    margin: 50px auto;
+    position: relative;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+  }
+  .swiper-button-prev {
+    left: 10px;
+  }
+  .swiper-button-next {
+    right: 10px;
+  }
