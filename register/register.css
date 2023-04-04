@@ -11,6 +11,9 @@ body{
 
 .main-section{
     height: 100vh;
+    background: url(https://res.cloudinary.com/innov8it/image/upload/v1680588425/back_hdk47z.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     display:flex;
     gap:2rem
 }
@@ -31,7 +34,8 @@ the images are hosted on cloudinary  */
     width:300px;
     height:300px;
     border-radius: 50%;
-    background-image: url(https://res.cloudinary.com/innov8it/image/upload/v1679762330/pexels-pixabay-261887_psu38z.jpg);
+    /* background-image: url(https://res.cloudinary.com/innov8it/image/upload/v1679762330/pexels-pixabay-261887_psu38z.jpg); */
+    background-image: url(https://res.cloudinary.com/innov8it/image/upload/v1680587361/reg_1_cxbrmx.png);
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
@@ -39,7 +43,7 @@ the images are hosted on cloudinary  */
 
 
 .right-section{
-    flex:3;
+    flex:2;
     display:flex;
     gap:1rem;
     flex-direction: column;
@@ -66,12 +70,24 @@ the images are hosted on cloudinary  */
 
 form{
     display:inline;
+    display:grid;
+    width:800px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    justify-items: center;
+    align-items: center;
+    background: none;
+    border-radius: 8px;
+    margin-bottom: 26px;
 }
 
 .form-field{
     width:30%;
     padding: 0.7rem;
     border-radius: 15px;
+    font-size: 1.6rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 500;
 }
 
 .forgot-password{
