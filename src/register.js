@@ -17,7 +17,6 @@
  const popUp = document.querySelector(".popup-wrapper");
  const popClose = document.querySelector(".popup-close")
  
-
  //  setting the GEOlocation API
 if(navigator.geolocation)
 navigator.geolocation.getCurrentPosition(function(){
@@ -130,7 +129,14 @@ popClose.addEventListener("click", ()=>{
 // adding firbase to the code base for backend 
 
 
-
+const firebaseConfig = {
+    apiKey: "AIzaSyBVzo4WlJRzj8cst17QKeK1lRa1HmFUZrQ",
+    authDomain: "cobralms.firebaseapp.com",
+    projectId: "cobralms",
+    storageBucket: "cobralms.appspot.com",
+    messagingSenderId: "847322060158",
+    appId: "1:847322060158:web:2323dd6db3cbf7f85c4f2f"
+  };
 
 
 

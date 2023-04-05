@@ -54,6 +54,15 @@ the images are hosted on cloudinary  */
     
 }
 
+.signchange{
+    text-decoration: none;
+    color:white;
+}
+
+.signchange:hover{
+    text-decoration: none;
+    color:white;
+}
 
 .right-section-head{
     display:flex;
@@ -176,7 +185,7 @@ form{
 }
 
 .popup-wrapper{
-    background:#306789 ;
+    background:rgb(1,19,82) !important;
     position:fixed;
     top:0%;
     left:30%;
