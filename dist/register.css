@@ -1,0 +1,248 @@
+*{
+    padding:0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+
+body{
+    background-color: #306789 !important;
+}
+
+.main-section{
+    height: 100vh;
+    background: url(https://res.cloudinary.com/innov8it/image/upload/v1680588425/back_hdk47z.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:flex;
+    gap:2rem
+}
+
+.register-left-section{
+    flex:1;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    gap:0.5 rem;
+    color:#fff
+}
+
+/* 
+the images are hosted on cloudinary  */
+.image-container{
+    width:300px;
+    height:300px;
+    border-radius: 50%;
+    /* background-image: url(https://res.cloudinary.com/innov8it/image/upload/v1679762330/pexels-pixabay-261887_psu38z.jpg); */
+    background-image: url(https://res.cloudinary.com/innov8it/image/upload/v1680587361/reg_1_cxbrmx.png);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.right-section{
+    flex:2;
+    display:flex;
+    gap:1rem;
+    flex-direction: column;
+    background: linear-gradient(to left , rgb(253, 227, 203),#ffffff);
+    padding: 30px;
+    border-radius: 5% 0% 0% 0%;
+    height: 100vh;
+    
+}
+
+
+.right-section-head{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+}
+
+.library-logo{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background-color: black;
+}
+
+form{
+    display:inline;
+    display:grid;
+    width:800px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    justify-items: center;
+    align-items: center;
+    background: none;
+    border-radius: 8px;
+    margin-bottom: 26px;
+}
+
+.form-field{
+    width:30%;
+    padding: 0.7rem;
+    border-radius: 15px;
+    font-size: 1.6rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 500;
+}
+
+.forgot-password{
+    color:rgb(211,211,32);
+}
+
+/* security checks for logging information  */ 
+ .email-span{
+    display:none;
+    font-size:12px;
+    color:red !important;
+    font-style: italic;
+    font-weight: 500;
+    
+}
+
+.lastname-span{
+    display:none;
+    font-size:12px;
+    color:red !important;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.first-span{
+    display:none;
+    font-size:12px;
+    color:red !important;
+    font-style:italic;
+    font-weight: 500;
+} 
+
+.number-span{
+    display:none;
+    font-size:12px;
+    color:red !important;
+    font-style: italic;
+    font-weight: 500;
+}
+
+
+.studentnumber-span{
+    display:none;
+    font-size:12px;
+    color:red !important;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.studentpassword-span{
+    display:none;
+    font-size:12px;
+    color:red !important;
+    font-style: italic;
+    font-weight: 500;
+}
+.studentsecondpassword-span{
+    display:none;
+    font-size:12px;
+    color:red !important;
+    font-style: italic;
+    font-weight: 500;
+}
+
+
+.studentmain-span{
+    display:none;
+    font-size:12px;
+    font-weight: 500;
+    color:red;
+    font-style: italic;
+}
+
+.dateofbirth-span{
+    display:none;
+    color:red;
+    font-size:12px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+
+.google-image{
+    height: 25px;
+    width:15px
+}
+
+.popup-wrapper{
+    background:#306789 ;
+    position:fixed;
+    top:0%;
+    left:30%;
+    width:100vh;
+    height: 100vh;
+    display:none;
+   
+}
+.policies{
+    text-align: center;
+    color:white;
+}
+.checkout{
+    text-align:center;
+    color:white;
+
+}
+.popup-close{
+    font-size: 70px;
+    color:white;
+    cursor:pointer;
+}
+.terms{
+    cursor:pointer;
+}
+
+/* media queries for responsiveness */
+@media only screen and (max-width: 578px){
+    .main-section{
+        flex-direction:column;
+    }
+
+    .right-section{
+        margin:0;
+        padding:10px;
+        border-top-right-radius:20px;
+        border-bottom-left-radius:0;
+        background-color:linear-gradient(to top,  rgb(253, 227, 203),#ffffff) ;
+    }
+
+    .popup-wrapper{
+        background:#306789 ;
+        position:fixed;
+        top:0%;
+        left:0%;
+        width:100vh;
+        height: 100vh;
+        display:none;
+       
+    }
+    .policies{
+        text-align: justify;
+        color:white;
+    }
+    .checkout{
+        text-align:justify;
+        color:white;
+        font-size:14px;
+    
+    }
+    .popup-close{
+        font-size: 20px;
+        color:white;
+        cursor:pointer;
+    }
+    .terms{
+        cursor:pointer;
+    }
+}
