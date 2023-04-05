@@ -1,6 +1,8 @@
  "use strict"
  localStorage.clear()
 
+ 
+
 //  DOM element Manipulations 
  const form=document.getElementById("form_controller");
  const firstnamecheck = document.querySelector(".first-span");
@@ -16,6 +18,8 @@
  const terms = document.querySelector(".terms");
  const popUp = document.querySelector(".popup-wrapper");
  const popClose = document.querySelector(".popup-close")
+
+
  
  //  setting the GEOlocation API
 if(navigator.geolocation)
@@ -127,8 +131,13 @@ popClose.addEventListener("click", ()=>{
 //please when hosting on google sign up , do not forget to rework your domain setting in your goolge sign up 
 
 // adding firbase to the code base for backend 
+import {initializeApp} from "firebase/app";
+import {
+    getFirestore,collection,getDocs
+} from "firebase/firestore"
 
 
+//firebase configuration 
 const firebaseConfig = {
     apiKey: "AIzaSyBVzo4WlJRzj8cst17QKeK1lRa1HmFUZrQ",
     authDomain: "cobralms.firebaseapp.com",
@@ -138,5 +147,30 @@ const firebaseConfig = {
     appId: "1:847322060158:web:2323dd6db3cbf7f85c4f2f"
   };
 
+//initializing firebase 
+initializeApp(firebaseConfig)
+
+
+//init services 
+const db = getFirestore()
+
+//collection reference 
+
+const colRef = collection(db, "users") 
+
+
+//getting collection  data  this function is to 
+getDocs(colRef)
+.then((snapshot)=>{
+    // setting the collection of document to get users from our database
+   let users= []
+   snapshot.docs.forEach((doc)=>{
+     users.push({...doc.data(), id:doc.id})
+   })
+   console.log(users)
+})
+.catch(err =>{
+    console.log(err.message)
+})
 
 
