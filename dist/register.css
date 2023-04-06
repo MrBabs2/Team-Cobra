@@ -106,7 +106,7 @@ form{
 /* security checks for logging information  */ 
  .email-span{
     display:none;
-    font-size:12px;
+    font-size:10px;
     color:red !important;
     font-style: italic;
     font-weight: 500;
@@ -115,7 +115,7 @@ form{
 
 .lastname-span{
     display:none;
-    font-size:12px;
+    font-size:10px;
     color:red !important;
     font-style: italic;
     font-weight: 500;
@@ -123,7 +123,7 @@ form{
 
 .first-span{
     display:none;
-    font-size:12px;
+    font-size:10px;
     color:red !important;
     font-style:italic;
     font-weight: 500;
@@ -131,7 +131,7 @@ form{
 
 .number-span{
     display:none;
-    font-size:12px;
+    font-size:10px;
     color:red !important;
     font-style: italic;
     font-weight: 500;
@@ -140,7 +140,7 @@ form{
 
 .studentnumber-span{
     display:none;
-    font-size:12px;
+    font-size:10px;
     color:red !important;
     font-style: italic;
     font-weight: 500;
@@ -148,14 +148,14 @@ form{
 
 .studentpassword-span{
     display:none;
-    font-size:12px;
+    font-size:10px;
     color:red !important;
     font-style: italic;
     font-weight: 500;
 }
 .studentsecondpassword-span{
     display:none;
-    font-size:12px;
+    font-size:10px;
     color:red !important;
     font-style: italic;
     font-weight: 500;
@@ -164,7 +164,7 @@ form{
 
 .studentmain-span{
     display:none;
-    font-size:12px;
+    font-size:10px;
     font-weight: 500;
     color:red;
     font-style: italic;
@@ -173,7 +173,7 @@ form{
 .dateofbirth-span{
     display:none;
     color:red;
-    font-size:12px;
+    font-size:10px;
     font-style: italic;
     font-weight: 500;
 }

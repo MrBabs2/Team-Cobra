@@ -1,7 +1,43 @@
  "use strict"
  localStorage.clear()
 
- 
+ //firbase configurations 
+
+import {initializeApp} from "firebase/app";
+import {
+    getFirestore,collection,getDocs,addDoc
+} from "firebase/firestore"
+
+
+//firebase configuration 
+const firebaseConfig = {
+    apiKey: "AIzaSyBVzo4WlJRzj8cst17QKeK1lRa1HmFUZrQ",
+    authDomain: "cobralms.firebaseapp.com",
+    projectId: "cobralms",
+    storageBucket: "cobralms.appspot.com",
+    messagingSenderId: "847322060158",
+    appId: "1:847322060158:web:2323dd6db3cbf7f85c4f2f"
+  };
+
+//initializing firebase 
+initializeApp(firebaseConfig)
+
+
+//init services 
+const db = getFirestore()
+
+//collection reference 
+
+const colRef = collection(db, "users") 
+
+//  setting the GEOlocation API
+if(navigator.geolocation)
+navigator.geolocation.getCurrentPosition(function(){
+    console.log("Your Position has been dervied ")
+},function(){
+    alert("Your position could not be derived")
+})
+
 
 //  DOM element Manipulations 
  const form=document.getElementById("form_controller");
@@ -18,16 +54,9 @@
  const terms = document.querySelector(".terms");
  const popUp = document.querySelector(".popup-wrapper");
  const popClose = document.querySelector(".popup-close")
-
-
- 
- //  setting the GEOlocation API
-if(navigator.geolocation)
-navigator.geolocation.getCurrentPosition(function(){
-    console.log("Your Position has been dervied ")
-},function(){
-    alert("Your position could not be derived")
-})
+//  console.log(form.children)
+// const changeArray= Array.from(form)
+// console.log(changeArray)
 
  // regex tester for firstname and lastname
  const firstnamepattern = /^[a-zA-Z]{1,}$/ 
@@ -55,7 +84,7 @@ function TestRegexPatterns(){
     //regex expression for phone number
     phonenumberchecker.test(Number(form.inputPhonenumber.value))? phonenumber.style.display = "none": phonenumber.style.display ="inline"
     //regex expression for testing student number 
-    studentNumber.test(form.inputStudentIDnumber.value) ? studentNumberSelector.style.display = "none" :studentNumberSelector.style.display = "inline" 
+    studentNumber.test(Number(form.inputStudentIDnumber.value)) ? studentNumberSelector.style.display = "none" :studentNumberSelector.style.display = "inline" 
     //regex expression for Date of Birth 
     DOB.test(form.inputdateofbirth.value)? dateOfBirthChecker.style.display ="none": dateOfBirthChecker.style.display ="inline"
     //regex expression for first and second password 
@@ -65,20 +94,6 @@ function TestRegexPatterns(){
     //testing for confirming both first and second password 
     form.inputfirstpassword.value !== form.inputconfirmpassword.value ? passwordconfirmer.style.display = "inline":passwordconfirmer.style.display = "none"
 }
-
-
-// setting event listeners 
- //adding prevent default to the form to prevent its default behavior
- //seting validation for the input fields in the form 
- //adding regex expression to the code 
-form.addEventListener("submit",(e)=>{e.preventDefault()
-    TestRegexPatterns()
-
-
-    return form.reset()
-})
-
-
 
 function settingLocalStorage(){
 //setting of data from the user input for local storage 
@@ -113,53 +128,39 @@ const localsecondpasssword = form.inputconfirmpassword.value.trim()
 
 settingLocalStorage()
 
+//adding users to the database from the front-end 
+// setting event listeners 
+ //adding prevent default to the form to prevent its default behavior
+ //seting validation for the input fields in the form 
+ //adding regex expression to the code 
 
-//setting up a pop-up modal for the read here section 
-terms.addEventListener("click", ()=>{
-    popUp.style.display ="block"
-})
+form.addEventListener("submit",(e)=>{e.preventDefault()
+    console.log("i am working")
+ // using conditions to test form input before calling firestore
+ 
+ if(form.firstname.value =="" || form.inputLastName.value =="" || form.inputemail.value =="" || form.inputPhonenumber.value =="" || form.inputStudentIDnumber.value == "" || form.inputdateofbirth.value =="" || form.inputfirstpassword.value =="" || form.inputconfirmpassword.value ==""){
+    TestRegexPatterns()  
+ }
+ // using else statement to add users to the firestore database 
+ else{
+    addDoc(colRef,{
+        firstname:form.firstname.value,
+        lastname:form.inputLastName.value,
+        email:form.inputemail.value,
+        phonenumber:form.inputPhonenumber.value,
+        studentnumber:form.inputStudentIDnumber.value,
+        dob:form.inputdateofbirth.value,
+        password:form.inputfirstpassword.value,
+        confirmpassword:form.inputconfirmpassword.value
+    
+    }).then(()=>{          //if the form is successfully then reset the form 
+        form.reset()
+    })
+ }
+ 
+ })
 
-//closing the popup bar by using the X element 
-
-popClose.addEventListener("click", ()=>{
-    popUp.style.display ="none"
-})
-
-
-//adding google sign up using google authorization and authentication API  for signing in and signing out  
-
-//please when hosting on google sign up , do not forget to rework your domain setting in your goolge sign up 
-
-// adding firbase to the code base for backend 
-import {initializeApp} from "firebase/app";
-import {
-    getFirestore,collection,getDocs
-} from "firebase/firestore"
-
-
-//firebase configuration 
-const firebaseConfig = {
-    apiKey: "AIzaSyBVzo4WlJRzj8cst17QKeK1lRa1HmFUZrQ",
-    authDomain: "cobralms.firebaseapp.com",
-    projectId: "cobralms",
-    storageBucket: "cobralms.appspot.com",
-    messagingSenderId: "847322060158",
-    appId: "1:847322060158:web:2323dd6db3cbf7f85c4f2f"
-  };
-
-//initializing firebase 
-initializeApp(firebaseConfig)
-
-
-//init services 
-const db = getFirestore()
-
-//collection reference 
-
-const colRef = collection(db, "users") 
-
-
-//getting collection  data  this function is to 
+//getting collection  data  from the firestore to showcase to the browser 
 getDocs(colRef)
 .then((snapshot)=>{
     // setting the collection of document to get users from our database
@@ -173,4 +174,13 @@ getDocs(colRef)
     console.log(err.message)
 })
 
+//setting up a pop-up modal for the read here section 
+terms.addEventListener("click", ()=>{
+    popUp.style.display ="block"
+})
 
+//closing the popup bar by using the X element 
+
+popClose.addEventListener("click", ()=>{
+    popUp.style.display ="none"
+})
