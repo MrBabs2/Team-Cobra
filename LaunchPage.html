@@ -41,6 +41,18 @@
         </div>
         <img src="Images/rocket.png" class="rocket">
     </div>
+<script>
+    var endDate = new Date("May 1, 2023").getTime();
+    var timeInterval = setInterval(function(){
+    var currentDate = new Date().getTime();
+    var timeLeft = endDate - currentDate;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    }, 1000);
+</script>
 
 </body>
 </html>
