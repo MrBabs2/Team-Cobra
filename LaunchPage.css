@@ -20,8 +20,7 @@
   .container{
     width: 100vw;
     height: 100vh;
-    background-image: url(Images/books.jpg);
-    background-image: 
+    background-image: url(Images/books.jpg); 
     background-position: center;
     background-size: cover;
     padding: 0 8%;
@@ -90,6 +89,26 @@
     font-size: 70px;
     margin-left: -10px;
 }
+
+.rocket{
+    width: 250px;
+    position: absolute;
+    bottom: 0;
+    right: 20%;
+    animation: rocket 4s linear infinite;
+}
+
+@keyframes rocket{
+    0%{
+        bottom: 0;
+        opacity: 0;
+    }
+    100%{
+        bottom: 110%;
+        opacity: 1;
+    }
+}
+
 /*
 .logo{
     background-image: url('Images/books-logo.png');
