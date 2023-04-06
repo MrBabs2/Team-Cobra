@@ -5,7 +5,7 @@
 
 import {initializeApp} from "firebase/app";
 import {
-    getFirestore,collection,onSnapshot,
+    getFirestore,collection,serverTimestamp,getDocs,addDoc
 } from "firebase/firestore"
 
 
@@ -27,8 +27,10 @@ initializeApp(firebaseConfig)
 const db = getFirestore()
 
 //collection reference 
-
 const colRef = collection(db, "users") 
+
+
+
 
 //  setting the GEOlocation API
 if(navigator.geolocation)
@@ -151,7 +153,8 @@ form.addEventListener("submit",(e)=>{e.preventDefault()
         studentnumber:form.inputStudentIDnumber.value,
         dob:form.inputdateofbirth.value,
         password:form.inputfirstpassword.value,
-        confirmpassword:form.inputconfirmpassword.value
+        confirmpassword:form.inputconfirmpassword.value,
+        createdAt:serverTimestamp()
     
     }).then(()=>{          //if the form is successfully then reset the form 
         form.reset()
@@ -161,31 +164,31 @@ form.addEventListener("submit",(e)=>{e.preventDefault()
  })
 
 //getting collection  data  from the firestore to showcase to the browser 
-// getDocs(colRef)
-// .then((snapshot)=>{
-//     // setting the collection of document to get users from our database
-//    let users= []
-//    snapshot.docs.forEach((doc)=>{
-//      users.push({...doc.data(), id:doc.id})
-//    })
-//    console.log(users)
-// })
-// .catch(err =>{
-//     console.log(err.message)
-// })
+getDocs(colRef)
+.then((snapshot)=>{
+    // setting the collection of document to get users from our database
+   let users= []
+   snapshot.docs.forEach((doc)=>{
+     users.push({...doc.data(), id:doc.id})
+   })
+   console.log(users)
+})
+.catch(err =>{
+    console.log(err.message)
+})
 
 //getting realtime data collection  setting it up for getting  updated document
 
-onSnapshot(colRef, (snapshot)=>{
+// getDocs(colRef, (snapshot)=>{
   
-    let users=[]
-    snapshot.docs.forEach(()=>{
-        users.push({...doc.data(), id:doc.id})
-    })
-    .catch(err =>{
-        console.log(err.message)
-    })
-})
+//     let users=[]
+//     snapshot.docs.forEach(()=>{
+//         users.push({...doc.data(), id:doc.id})
+//     })
+//     .catch(err =>{
+//         console.log(err.message)
+//     })
+// })
     
 
 
