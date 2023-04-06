@@ -5,7 +5,7 @@
 
 import {initializeApp} from "firebase/app";
 import {
-    getFirestore,collection,getDocs,
+    getFirestore,collection,onSnapshot,
 } from "firebase/firestore"
 
 
@@ -161,18 +161,35 @@ form.addEventListener("submit",(e)=>{e.preventDefault()
  })
 
 //getting collection  data  from the firestore to showcase to the browser 
-getDocs(colRef)
-.then((snapshot)=>{
-    // setting the collection of document to get users from our database
-   let users= []
-   snapshot.docs.forEach((doc)=>{
-     users.push({...doc.data(), id:doc.id})
-   })
-   console.log(users)
+// getDocs(colRef)
+// .then((snapshot)=>{
+//     // setting the collection of document to get users from our database
+//    let users= []
+//    snapshot.docs.forEach((doc)=>{
+//      users.push({...doc.data(), id:doc.id})
+//    })
+//    console.log(users)
+// })
+// .catch(err =>{
+//     console.log(err.message)
+// })
+
+//getting realtime data collection  setting it up for getting  updated document
+
+onSnapshot(colRef, (snapshot)=>{
+  
+    let users=[]
+    snapshot.docs.forEach(()=>{
+        users.push({...doc.data(), id:doc.id})
+    })
+    .catch(err =>{
+        console.log(err.message)
+    })
 })
-.catch(err =>{
-    console.log(err.message)
-})
+    
+
+
+
 
 //setting up a pop-up modal for the read here section 
 terms.addEventListener("click", ()=>{
