@@ -1,2 +1,8 @@
 Tomi Python/Firebase
 Tomi Python/Library.css
+Tomi Python/Cookies/Cookies.css
+.gitignore
+Tomi Python/Cookies/Cookies.html
+Tomi Python/Cookies/cookies.png
+Pipfile
+Pipfile.lock
