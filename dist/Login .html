@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./Loginpage.css" />
+    <title>LOGIN PAGE</title>
+  </head>
+  <body>
+    <div class="background">
+      <div class="blob">
+        <img src="./Blob-Shape.png" alt="" />
+        <img src="./Blob-Shape1.png" alt="">
+        <img src="./Blob-Shape2.png" alt="">
+      </div>
+      <header>
+        <nav class="navbar navbar-expand-lg bg-light shadow-sm">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Cobra Library Management System</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-around"
+              id="navbarNavAltMarkup"
+            >
+              <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="./Home.html"
+                  >HOME</a
+                >
+                <a class="nav-link signup-btn" href="./register.html"
+                  >SIGN UP
+                  <img class="arrow-img" src="arrow-right.svg" alt="" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <div class="d-flex justify-content-around main">
+          <section class="section-1">
+            <h2>
+              LIBRARY <br />
+              MANAGEMENT <br />
+              SYSTEM
+            </h2>
+          </section>
+          <section class="section-2">
+            <form>
+              <h2>
+                Welcome <br />
+                Back
+              </h2>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                />
+              </div>
+              <div class="mb-3 form-check d-flex justify-content-between">
+                <div class="">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="exampleCheck1"
+                  />
+                  <label class="form-check-label" for="exampleCheck1"
+                    >Remember me</label
+                  >
+                </div>
+                <div><a href="#">Forgot Password?</a></div>
+              </div>
+              <button type="submit" class="btn form-btn-1">Sign in</button>
+              <p class="text-center">or</p>
+              <a class="btn btn-outline-secondary" href="#" role="button"
+                ><img src="google.svg" alt="" class="google-icon" />Sign up with
+                google</a
+              >
+            </form>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="wrapper">
+      <header>
+        <i class="bx bx-cookie"></i>
+        <h2>Cookies Consent</h2>
+      </header>
+
+      <div class="data">
+        <p>This website use cookies to help you have a superior and more relevant browsing experience on the website. <a href="#"> Read more...</a></p>
+      </div>
+
+      <div class="buttons">
+        <button class="button" id="acceptBtn">Accept</button>
+        <button class="button" id="declineBtn">Decline</button>
+      </div>
+    </div>
+
+    <script>
+      const cookieBox = document.querySelector(".wrapper"),
+      buttons = document.querySelectorAll(".button");
+    
+    const executeCodes = () => {
+      //if cookie contains codinglab it will be returned and below of this code will not run
+      if (document.cookie.includes("cobra")) return;
+      cookieBox.classList.add("show");
+    
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          cookieBox.classList.remove("show");
+    
+          //if button has acceptBtn id
+          if (button.id == "acceptBtn") {
+            //set cookies for 1 month. 60 = 1 min, 60 = 1 hours, 24 = 1 day, 30 = 30 days
+            document.cookie = "cookieBy= cobra; max-age=" + 60 * 60 * 24 * 30;
+          }
+        });
+      });
+    };
+    
+    //executeCodes function will be called on webpage load
+    window.addEventListener("load", executeCodes);
+
+  </script>
+   
+  </body>
+</html>
