@@ -5,7 +5,7 @@
 
 import {initializeApp} from "firebase/app";
 import {
-    getFirestore,collection,serverTimestamp,getDocs,addDoc
+    getFirestore,collection,serverTimestamp,getDocs,addDoc,getDoc,doc
 } from "firebase/firestore"
 
 
@@ -177,22 +177,15 @@ getDocs(colRef)
     console.log(err.message)
 })
 
-//getting realtime data collection  setting it up for getting  updated document
+// getting a single user from our database 
 
-// getDocs(colRef, (snapshot)=>{
-  
-//     let users=[]
-//     snapshot.docs.forEach(()=>{
-//         users.push({...doc.data(), id:doc.id})
-//     })
-//     .catch(err =>{
-//         console.log(err.message)
-//     })
-// })
+const singleDoc = doc (db, "users", doc.id)
+
+getDoc(singleDoc)
+.then((doc)=>{
+    console.log(doc.data(),doc.id)
+})
     
-
-
-
 
 //setting up a pop-up modal for the read here section 
 terms.addEventListener("click", ()=>{
