@@ -181,7 +181,8 @@ form{
 
 .google-image{
     height: 25px;
-    width:15px
+    width:15px;
+    color:dark
 }
 
 .popup-wrapper{
