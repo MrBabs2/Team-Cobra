@@ -8,7 +8,7 @@ import {
     getFirestore,collection,serverTimestamp,getDocs,addDoc,getDoc,doc
 } from "firebase/firestore"
 
-
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 //firebase configuration 
 const firebaseConfig = {
@@ -30,6 +30,13 @@ const db = getFirestore()
 //collection reference 
 const colRef = collection(db, "users") 
 
+//initializing firebaase authentication 
+
+const auth = getAuth(initializeApp(firebaseConfig));
+
+//google provider 
+
+const provider = new GoogleAuthProvider();
 
 if(navigator.geolocation)
 navigator.geolocation.getCurrentPosition(function(){
@@ -49,83 +56,14 @@ navigator.geolocation.getCurrentPosition(function(){
  const firstPasswordLength = document.querySelector(".studentpassword-span");
  const secondPasswordlength =document.querySelector(".studentsecondpassword-span");
  const passwordconfirmer = document.querySelector(".studentmain-span");
- const googlesignIn = document.querySelector(".g-signin2");
+ const signIn = document.querySelector("#login-google");
  const terms = document.querySelector(".terms");
  const popUp = document.querySelector(".popup-wrapper");
  const popClose = document.querySelector(".popup-close")
  
 
- // regex tester for firstname and lastname
- const firstnamepattern = /^[a-zA-Z]{1,}$/ 
- // regex tester for email 
- const emailchecker = /^.{4,}$/
-//regex tester for phone number
-const phonenumberchecker = /^[0-9]{6,}$/ 
-//regex tester for studentnumber 
-const studentNumber = /^[0-9]{0,8}$/ 
-//regex testerfor date of birth
-const DOB = /^.{1,12}$/ 
-//regex tester for password 
-const firstPassword = /^.{1,}$/
-//regex tester for confirmingpassword 
-const secondpasswordChecker = /^.{1,}$/
-
-function  TestRegexPatterns(){
-    // regex expression for firstname
-         //regex expression using ternary operator for the 
-         firstnamepattern.test(form.firstname.value) ?  firstnamecheck.style.display = "none" :firstnamecheck.style.display = "inline" ;
-        //  regex expression for lastname value 
-        firstnamepattern.test(form.inputLastName.value)? lastNameCheck.style.display = "none"  : lastNameCheck.style.display = "inline"
-        //regex expression for testing emails
-        emailchecker.test(form.inputemail.value)?emailCheck.style.display="none":emailCheck.style.display="inline"
-        //regex expression for phone number
-        phonenumberchecker.test(Number(form.inputPhonenumber.value))? phonenumber.style.display = "none": phonenumber.style.display ="inline"
-        //regex expression for testing student number 
-        studentNumber.test(Number(form.inputStudentIDnumber.value)) ? studentNumberSelector.style.display = "none" :studentNumberSelector.style.display = "inline" 
-        //regex expression for Date of Birth 
-        DOB.test(form.inputdateofbirth.value)? dateOfBirthChecker.style.display ="none": dateOfBirthChecker.style.display ="inline"
-        //regex expression for first and second password 
-        firstPassword.test(form.inputfirstpassword.value) ? firstPasswordLength.style.display = "none": firstPasswordLength.style.display = "inline"
-        // for testing the password length 
-        secondpasswordChecker.test(form.inputconfirmpassword.value) ? secondPasswordlength.style.display = "none": secondPasswordlength.style.display = "inline"
-        //testing for confirming both first and second password 
-        form.inputfirstpassword.value !== form.inputconfirmpassword.value ? passwordconfirmer.style.display = "inline":passwordconfirmer.style.display = "none"
-    }
 
 
-
-function settingLocalStorage(){
-//setting of data from the user input for local storage 
-const localFirstName= form.firstname.value.trim();  
-const localSecondName =form.inputLastName.value.trim();
-const localEmail = form.inputemail.value.trim()
-const localStudentIdNumber = form.inputStudentIDnumber.value.trim()
-const localfirstpassword = form.inputfirstpassword.value.trim()
-const localsecondpasssword = form.inputconfirmpassword.value.trim()
-
-//setting up local storage using local storage API 
-//setting up the object for obtaining data from users 
- let userInput = [{
-    "firstname":localFirstName,
-    "secondname": localSecondName,
-    "email":localEmail,
-    "student Number":localStudentIdNumber,
-    "firstpassword":localfirstpassword,
-    "secondpassword":localsecondpasssword
- }]
-
- //stringify the localstorage API data to store in browser
- let inputs = JSON.stringify(userInput)
-
- //using the localstorage function to setItems in the local storage 
-
-    return localStorage.setItem("itemsStr", inputs)
-
-   
-}
-
-
-settingLocalStorage()
 
 form.addEventListener("submit",(e)=>{e.preventDefault()
     console.log("i am working")
@@ -160,6 +98,33 @@ form.addEventListener("submit",(e)=>{e.preventDefault()
  
  })
 
+
+
+
+ //adding google sign in authentication 
+signIn.addEventListener("click",()=>{
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
+})
+
+
 //getting collection  data  from the firestore to showcase to the browser 
 getDocs(colRef)
 .then((snapshot)=>{
@@ -173,6 +138,78 @@ getDocs(colRef)
 .catch(err =>{
     console.log(err.message)
 })
+
+// regex tester for firstname and lastname
+const firstnamepattern = /^[a-zA-Z]{1,}$/ 
+// regex tester for email 
+const emailchecker = /^.{4,}$/
+//regex tester for phone number
+const phonenumberchecker = /^[0-9]{6,}$/ 
+//regex tester for studentnumber 
+const studentNumber = /^[0-9]{0,8}$/ 
+//regex testerfor date of birth
+const DOB = /^.{1,12}$/ 
+//regex tester for password 
+const firstPassword = /^.{1,}$/
+//regex tester for confirmingpassword 
+const secondpasswordChecker = /^.{1,}$/
+
+function  TestRegexPatterns(){
+   // regex expression for firstname
+        //regex expression using ternary operator for the 
+        firstnamepattern.test(form.firstname.value) ?  firstnamecheck.style.display = "none" :firstnamecheck.style.display = "inline" ;
+       //  regex expression for lastname value 
+       firstnamepattern.test(form.inputLastName.value)? lastNameCheck.style.display = "none"  : lastNameCheck.style.display = "inline"
+       //regex expression for testing emails
+       emailchecker.test(form.inputemail.value)?emailCheck.style.display="none":emailCheck.style.display="inline"
+       //regex expression for phone number
+       phonenumberchecker.test(Number(form.inputPhonenumber.value))? phonenumber.style.display = "none": phonenumber.style.display ="inline"
+       //regex expression for testing student number 
+       studentNumber.test(Number(form.inputStudentIDnumber.value)) ? studentNumberSelector.style.display = "none" :studentNumberSelector.style.display = "inline" 
+       //regex expression for Date of Birth 
+       DOB.test(form.inputdateofbirth.value)? dateOfBirthChecker.style.display ="none": dateOfBirthChecker.style.display ="inline"
+       //regex expression for first and second password 
+       firstPassword.test(form.inputfirstpassword.value) ? firstPasswordLength.style.display = "none": firstPasswordLength.style.display = "inline"
+       // for testing the password length 
+       secondpasswordChecker.test(form.inputconfirmpassword.value) ? secondPasswordlength.style.display = "none": secondPasswordlength.style.display = "inline"
+       //testing for confirming both first and second password 
+       form.inputfirstpassword.value !== form.inputconfirmpassword.value ? passwordconfirmer.style.display = "inline":passwordconfirmer.style.display = "none"
+   }
+
+
+
+function settingLocalStorage(){
+//setting of data from the user input for local storage 
+const localFirstName= form.firstname.value.trim();  
+const localSecondName =form.inputLastName.value.trim();
+const localEmail = form.inputemail.value.trim()
+const localStudentIdNumber = form.inputStudentIDnumber.value.trim()
+const localfirstpassword = form.inputfirstpassword.value.trim()
+const localsecondpasssword = form.inputconfirmpassword.value.trim()
+
+//setting up local storage using local storage API 
+//setting up the object for obtaining data from users 
+let userInput = [{
+   "firstname":localFirstName,
+   "secondname": localSecondName,
+   "email":localEmail,
+   "student Number":localStudentIdNumber,
+   "firstpassword":localfirstpassword,
+   "secondpassword":localsecondpasssword
+}]
+
+//stringify the localstorage API data to store in browser
+let inputs = JSON.stringify(userInput)
+
+//using the localstorage function to setItems in the local storage 
+
+   return localStorage.setItem("itemsStr", inputs)
+
+  
+}
+
+
+settingLocalStorage()
 
 //setting up a pop-up modal for the read here section 
 terms.addEventListener("click", ()=>{

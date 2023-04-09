@@ -17,6 +17,7 @@ const buttons = [first,second,third,fourth,fifth,sixth,seventh,eight,nine,ten]
 buttons.forEach((button)=>{
  button.addEventListener("click",()=>{
   payButton.style.display="block"
+  button.style.backgroundColor ="#ed8e00;"
  })
 })
 
