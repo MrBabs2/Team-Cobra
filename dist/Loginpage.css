@@ -65,7 +65,7 @@ html, body{
     font-weight: 700;
     font-size: 2.2em;
 }
-form{
+/* form{
     width: 100%;
     font-size: 15px;
     position: absolute;
@@ -74,7 +74,7 @@ form{
     width: 25%;
     height: 700px;
     z-index: 4;
-}
+} */
 .section-2{
     padding-top: 100px;
 }
@@ -99,6 +99,62 @@ a.forgot-password{
 }
 .google-icon{
     padding-right: 5px;
+}
+
+.welcome{
+  font-size: 10px;
+  position: absolute;
+  top: 20%;
+  left: 70%;
+  /* width: 25%;
+  height: 700px; */
+  z-index: 4;
+}
+
+.country{
+  /* font-size: 10px; */
+  position: absolute;
+  top: 60%;
+  left: 76%;
+  color:white;
+  /* width: 25%;
+  height: 700px; */
+  z-index: 4;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+}
+.img-top{
+  position: absolute;
+  top: 20%;
+  left: 26%;
+  border-radius: 50%;
+}
+.city{
+  position: absolute;
+  top: 83%;
+  left: 79%;
+  color:white;
+  /* width: 25%;
+  height: 700px; */
+  z-index: 4;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+}
+.weather-check{
+  width:500px;
+  height:370px;
+  background-color:#ed8e00;
+  border-radius: 10% 15% 45% 0%;
+  
+
+  /* width: 100%; */
+    font-size: 15px;
+    position: absolute;
+    top: 40%;
+    left: 70%;
+    /* width: 25%;
+    height: 700px; */
+    z-index: 4;
 }
 @media screen and (min-width:768px) and (max-width:996px){
     .navbar-nav{

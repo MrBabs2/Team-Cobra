@@ -1,3 +1,4 @@
+
 const path = require("path")
 
 module.exports ={
@@ -7,5 +8,7 @@ module.exports ={
         path:path.resolve(__dirname,"dist"),
         filename:"bundle.js"
     },
-    watch:true
-}
+    // module: {
+    //     rules: [{ test: /\.html/, use: 'raw-loader' }],
+    //   },
+    watch:true}

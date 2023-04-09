@@ -1,12 +1,13 @@
  "use strict"
+ 
  localStorage.clear()
-
  //firbase configurations 
 
 import {initializeApp} from "firebase/app";
 import {
     getFirestore,collection,serverTimestamp,getDocs,addDoc,getDoc,doc
 } from "firebase/firestore"
+
 
 
 //firebase configuration 
@@ -30,16 +31,12 @@ const db = getFirestore()
 const colRef = collection(db, "users") 
 
 
-
-
-//  setting the GEOlocation API
 if(navigator.geolocation)
 navigator.geolocation.getCurrentPosition(function(){
     console.log("Your Position has been dervied ")
 },function(){
     alert("Your position could not be derived")
 })
-
 
 //  DOM element Manipulations 
  const form=document.getElementById("form_controller");
@@ -56,9 +53,7 @@ navigator.geolocation.getCurrentPosition(function(){
  const terms = document.querySelector(".terms");
  const popUp = document.querySelector(".popup-wrapper");
  const popClose = document.querySelector(".popup-close")
-//  console.log(form.children)
-// const changeArray= Array.from(form)
-// console.log(changeArray)
+ 
 
  // regex tester for firstname and lastname
  const firstnamepattern = /^[a-zA-Z]{1,}$/ 
@@ -75,27 +70,29 @@ const firstPassword = /^.{1,}$/
 //regex tester for confirmingpassword 
 const secondpasswordChecker = /^.{1,}$/
 
-function TestRegexPatterns(){
-// regex expression for firstname
-     //regex expression using ternary operator for the 
-     firstnamepattern.test(form.firstname.value) ?  firstnamecheck.style.display = "none" :firstnamecheck.style.display = "inline" ;
-    //  regex expression for lastname value 
-    firstnamepattern.test(form.inputLastName.value)? lastNameCheck.style.display = "none"  : lastNameCheck.style.display = "inline"
-    //regex expression for testing emails
-    emailchecker.test(form.inputemail.value)?emailCheck.style.display="none":emailCheck.style.display="inline"
-    //regex expression for phone number
-    phonenumberchecker.test(Number(form.inputPhonenumber.value))? phonenumber.style.display = "none": phonenumber.style.display ="inline"
-    //regex expression for testing student number 
-    studentNumber.test(Number(form.inputStudentIDnumber.value)) ? studentNumberSelector.style.display = "none" :studentNumberSelector.style.display = "inline" 
-    //regex expression for Date of Birth 
-    DOB.test(form.inputdateofbirth.value)? dateOfBirthChecker.style.display ="none": dateOfBirthChecker.style.display ="inline"
-    //regex expression for first and second password 
-    firstPassword.test(form.inputfirstpassword.value) ? firstPasswordLength.style.display = "none": firstPasswordLength.style.display = "inline"
-    // for testing the password length 
-    secondpasswordChecker.test(form.inputconfirmpassword.value) ? secondPasswordlength.style.display = "none": secondPasswordlength.style.display = "inline"
-    //testing for confirming both first and second password 
-    form.inputfirstpassword.value !== form.inputconfirmpassword.value ? passwordconfirmer.style.display = "inline":passwordconfirmer.style.display = "none"
-}
+function  TestRegexPatterns(){
+    // regex expression for firstname
+         //regex expression using ternary operator for the 
+         firstnamepattern.test(form.firstname.value) ?  firstnamecheck.style.display = "none" :firstnamecheck.style.display = "inline" ;
+        //  regex expression for lastname value 
+        firstnamepattern.test(form.inputLastName.value)? lastNameCheck.style.display = "none"  : lastNameCheck.style.display = "inline"
+        //regex expression for testing emails
+        emailchecker.test(form.inputemail.value)?emailCheck.style.display="none":emailCheck.style.display="inline"
+        //regex expression for phone number
+        phonenumberchecker.test(Number(form.inputPhonenumber.value))? phonenumber.style.display = "none": phonenumber.style.display ="inline"
+        //regex expression for testing student number 
+        studentNumber.test(Number(form.inputStudentIDnumber.value)) ? studentNumberSelector.style.display = "none" :studentNumberSelector.style.display = "inline" 
+        //regex expression for Date of Birth 
+        DOB.test(form.inputdateofbirth.value)? dateOfBirthChecker.style.display ="none": dateOfBirthChecker.style.display ="inline"
+        //regex expression for first and second password 
+        firstPassword.test(form.inputfirstpassword.value) ? firstPasswordLength.style.display = "none": firstPasswordLength.style.display = "inline"
+        // for testing the password length 
+        secondpasswordChecker.test(form.inputconfirmpassword.value) ? secondPasswordlength.style.display = "none": secondPasswordlength.style.display = "inline"
+        //testing for confirming both first and second password 
+        form.inputfirstpassword.value !== form.inputconfirmpassword.value ? passwordconfirmer.style.display = "inline":passwordconfirmer.style.display = "none"
+    }
+
+
 
 function settingLocalStorage(){
 //setting of data from the user input for local storage 
@@ -126,22 +123,18 @@ const localsecondpasssword = form.inputconfirmpassword.value.trim()
 
    
 }
-//looping over the userinput to reset values put  
+
 
 settingLocalStorage()
 
-//adding users to the database from the front-end 
-// setting event listeners 
- //adding prevent default to the form to prevent its default behavior
- //seting validation for the input fields in the form 
- //adding regex expression to the code 
-
 form.addEventListener("submit",(e)=>{e.preventDefault()
     console.log("i am working")
+    
  // using conditions to test form input before calling firestore
  
  if(form.firstname.value =="" || form.inputLastName.value =="" || form.inputemail.value =="" || form.inputPhonenumber.value =="" || form.inputStudentIDnumber.value == "" || form.inputdateofbirth.value =="" || form.inputfirstpassword.value =="" || form.inputconfirmpassword.value ==""){
-    TestRegexPatterns()  
+    TestRegexPatterns() 
+    
  }
  // using else statement to add users to the firestore database 
  else{
@@ -156,8 +149,12 @@ form.addEventListener("submit",(e)=>{e.preventDefault()
         confirmpassword:form.inputconfirmpassword.value,
         createdAt:serverTimestamp()
     
-    }).then(()=>{          //if the form is successfully then reset the form 
+    }).then(()=>{          //if the form is successfully then reset the form and take user to the dashboard 
         form.reset()
+      form.innerHTML=`<button class="dashboard" style=" text-decoration: none;
+      color:rgb(1,19,82) !important;
+      padding:10px;
+      border-radius: 3px;"><a href="../dist/User.Html">Login into your dashboard</a></button>`   
     })
  }
  
@@ -177,23 +174,16 @@ getDocs(colRef)
     console.log(err.message)
 })
 
-// getting a single user from our database 
-
-const singleDoc = doc (db, "users", doc.id)
-
-getDoc(singleDoc)
-.then((doc)=>{
-    console.log(doc.data(),doc.id)
-})
-    
-
 //setting up a pop-up modal for the read here section 
 terms.addEventListener("click", ()=>{
     popUp.style.display ="block"
 })
 
 //closing the popup bar by using the X element 
-
 popClose.addEventListener("click", ()=>{
     popUp.style.display ="none"
 })
+
+
+
+
