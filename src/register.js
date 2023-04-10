@@ -36,7 +36,7 @@ const auth = getAuth(initializeApp(firebaseConfig));
 
 //google provider 
 
-const provider = new GoogleAuthProvider();
+const provider = new GoogleAuthProvider(initializeApp(firebaseConfig));
 
 if(navigator.geolocation)
 navigator.geolocation.getCurrentPosition(function(){
@@ -61,6 +61,42 @@ navigator.geolocation.getCurrentPosition(function(){
  const popUp = document.querySelector(".popup-wrapper");
  const popClose = document.querySelector(".popup-close")
  
+// regex tester for firstname and lastname
+const firstnamepattern = /^[a-zA-Z]{1,}$/ 
+// regex tester for email 
+const emailchecker = /^.{4,}$/
+//regex tester for phone number
+const phonenumberchecker = /^[0-9]{6,}$/ 
+//regex tester for studentnumber 
+const studentNumber = /^[0-9]{0,8}$/ 
+//regex testerfor date of birth
+const DOB = /^.{1,12}$/ 
+//regex tester for password 
+const firstPassword = /^.{1,}$/
+//regex tester for confirmingpassword 
+const secondpasswordChecker = /^.{1,}$/
+
+function  TestRegexPatterns(){
+   // regex expression for firstname
+        //regex expression using ternary operator for the 
+        firstnamepattern.test(form.firstname.value) ?  firstnamecheck.style.display = "none" :firstnamecheck.style.display = "inline" ;
+       //  regex expression for lastname value 
+       firstnamepattern.test(form.inputLastName.value)? lastNameCheck.style.display = "none"  : lastNameCheck.style.display = "inline";
+       //regex expression for testing emails
+       emailchecker.test(form.inputemail.value)?emailCheck.style.display="none":emailCheck.style.display="inline";
+       //regex expression for phone number
+       phonenumberchecker.test(Number(form.inputPhonenumber.value))? phonenumber.style.display = "none": phonenumber.style.display ="inline";
+       //regex expression for testing student number 
+       studentNumber.test(form.inputStudentIDnumber.value) ? studentNumberSelector.style.display = "none" :studentNumberSelector.style.display = "inline" ;
+       //regex expression for Date of Birth 
+       DOB.test(form.inputdateofbirth.value)? dateOfBirthChecker.style.display ="none": dateOfBirthChecker.style.display ="inline";
+       //regex expression for first and second password 
+       firstPassword.test(form.inputfirstpassword.value) ? firstPasswordLength.style.display = "none": firstPasswordLength.style.display = "inline";
+       // for testing the password length 
+       secondpasswordChecker.test(form.inputconfirmpassword.value) ? secondPasswordlength.style.display = "none": secondPasswordlength.style.display = "inline";
+       //testing for confirming both first and second password 
+       form.inputfirstpassword.value !== form.inputconfirmpassword.value ? passwordconfirmer.style.display = "inline":passwordconfirmer.style.display = "none";
+   }
 
 
 
@@ -139,42 +175,6 @@ getDocs(colRef)
     console.log(err.message)
 })
 
-// regex tester for firstname and lastname
-const firstnamepattern = /^[a-zA-Z]{1,}$/ 
-// regex tester for email 
-const emailchecker = /^.{4,}$/
-//regex tester for phone number
-const phonenumberchecker = /^[0-9]{6,}$/ 
-//regex tester for studentnumber 
-const studentNumber = /^[0-9]{0,8}$/ 
-//regex testerfor date of birth
-const DOB = /^.{1,12}$/ 
-//regex tester for password 
-const firstPassword = /^.{1,}$/
-//regex tester for confirmingpassword 
-const secondpasswordChecker = /^.{1,}$/
-
-function  TestRegexPatterns(){
-   // regex expression for firstname
-        //regex expression using ternary operator for the 
-        firstnamepattern.test(form.firstname.value) ?  firstnamecheck.style.display = "none" :firstnamecheck.style.display = "inline" ;
-       //  regex expression for lastname value 
-       firstnamepattern.test(form.inputLastName.value)? lastNameCheck.style.display = "none"  : lastNameCheck.style.display = "inline"
-       //regex expression for testing emails
-       emailchecker.test(form.inputemail.value)?emailCheck.style.display="none":emailCheck.style.display="inline"
-       //regex expression for phone number
-       phonenumberchecker.test(Number(form.inputPhonenumber.value))? phonenumber.style.display = "none": phonenumber.style.display ="inline"
-       //regex expression for testing student number 
-       studentNumber.test(Number(form.inputStudentIDnumber.value)) ? studentNumberSelector.style.display = "none" :studentNumberSelector.style.display = "inline" 
-       //regex expression for Date of Birth 
-       DOB.test(form.inputdateofbirth.value)? dateOfBirthChecker.style.display ="none": dateOfBirthChecker.style.display ="inline"
-       //regex expression for first and second password 
-       firstPassword.test(form.inputfirstpassword.value) ? firstPasswordLength.style.display = "none": firstPasswordLength.style.display = "inline"
-       // for testing the password length 
-       secondpasswordChecker.test(form.inputconfirmpassword.value) ? secondPasswordlength.style.display = "none": secondPasswordlength.style.display = "inline"
-       //testing for confirming both first and second password 
-       form.inputfirstpassword.value !== form.inputconfirmpassword.value ? passwordconfirmer.style.display = "inline":passwordconfirmer.style.display = "none"
-   }
 
 
 
