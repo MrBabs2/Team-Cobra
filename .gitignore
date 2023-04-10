@@ -6,3 +6,22 @@ Tomi Python/Cookies/Cookies.html
 Tomi Python/Cookies/cookies.png
 Pipfile
 Pipfile.lock
+.DS_Store
+db.sqlite3
+manage.py
+Backend/__init__.py
+Backend/asgi.py
+Backend/settings.py
+Backend/urls.py
+Backend/wsgi.py
+Backend/__pycache__/__init__.cpython-311.pyc
+Backend/__pycache__/settings.cpython-311.pyc
+Backend/__pycache__/urls.cpython-311.pyc
+Backend/__pycache__/wsgi.cpython-311.pyc
+playground/__init__.py
+playground/admin.py
+playground/apps.py
+playground/models.py
+playground/tests.py
+playground/views.py
+playground/migrations/__init__.py
