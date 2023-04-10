@@ -25,7 +25,7 @@ const loginChecker = dateFns.distanceInWords(before,now)
 //adding the windows event to load the time 
 
 window.addEventListener("load", ()=>{
-    datecheck.innerHTML =`<span>You logged in ${loginChecker} ago</span>`;
+    datecheck.innerHTML =`<span>You last log in was ${loginChecker} ago</span>`;
     datecheck.style.color = "black";
     datecheck.style.padding ="9px";
     datecheck.style.fontWeight ="bold";
@@ -60,7 +60,7 @@ const userIdentifier = {
 showBook.addEventListener("click", ()=>{
     bookTitle.textContent = userIdentifier.title;
     bookDesc.textContent = userIdentifier.description;
-    bookCover.innerHTML =  `<img src="https://res.cloudinary.com/innov8it/image/upload/v1681001261/image_3_a6s7b7.png " class="img-center">`
+    bookCover.innerHTML =  `<img src=${userIdentifier.logo} class="img-center">`
     bookStatus.textContent= `Borrowed`
     returnBookdate.textContent = `Return Date : ${userIdentifier.Returndate}`
 
