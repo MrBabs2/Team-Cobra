@@ -239,3 +239,25 @@ p {
         font-weight: 500;
       }
 }
+
+#notification{
+  width:20px;
+  height:20px;
+  border-radius: 50%;
+  background-color: #ed8e00;
+  position: absolute;
+  top:51%;
+  left:19%;
+  display:none;
+}
+
+.image-control{
+  position:absolute;
+  top:40%;
+  left:50%;
+}
+
+.img-center{
+  width:300px;
+  height:300px;
+}

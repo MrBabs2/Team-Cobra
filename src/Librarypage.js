@@ -51,27 +51,8 @@ buttons.forEach((button)=>{
 
 
 
-    //creating an object to the exported to the user.js page 
-
-
-    //creating a function to get a difference between the borrowed date and future date 
-   const today= new Date();
-  //  const futureDate =future.setDate(future.getDate() + 14)
-  const oneWeek = 604800000 
-  const futureDate = new Date () 
-  const accumDate = futureDate.getTime() + oneWeek
-   const returnDate = new Date(accumDate)
-
-   // time in milliseconds 
-
-  //converting these milliseconds to date 
-    export const userIdentifier = {
     
-      title: "How To be a Spoof master",
-      description: "Wireshark",
-      logo: "https://res.cloudinary.com/innov8it/image/upload/v1681001261/image_3_a6s7b7.png",
-      status : "borrowed",
-      Returndate: returnDate
-    }
 
-    console.log(userIdentifier)
+
+  
+  

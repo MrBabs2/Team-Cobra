@@ -66,7 +66,8 @@
                                             <path d="M26.8528 7.75546C26.7779 7.65043 26.6786 7.56471 26.5631 7.50551C26.4477 7.44631 26.3195 7.41536 26.1894 7.41528H8.85891L7.54706 2.94869C7.03261 1.18987 5.81015 1 5.30876 1H1.8109C1.36257 1 1 1.35838 1 1.8006C1 2.24282 1.36297 2.60117 1.81087 2.60117H5.30833C5.41898 2.60117 5.75664 2.60117 5.98694 3.38686L10.4998 19.7621C10.5978 20.1075 10.9167 20.3462 11.2805 20.3462H22.3036C22.6458 20.3462 22.9512 20.1345 23.0667 19.8165L26.9521 8.48673C27.0415 8.24123 27.0043 7.96791 26.8529 7.75546H26.8528ZM21.733 18.7454H11.8959L9.3147 9.01688H25.0365L21.733 18.7454ZM20.1247 21.9688C18.997 21.9688 18.0832 22.871 18.0832 23.9844C18.0832 25.0978 18.997 26 20.1247 26C21.2524 26 22.1662 25.0978 22.1662 23.9844C22.1662 22.871 21.2524 21.9688 20.1247 21.9688ZM12.7754 21.9688C11.6477 21.9688 10.7339 22.871 10.7339 23.9844C10.7339 25.0978 11.6477 26 12.7754 26C13.9031 26 14.8169 25.0978 14.8169 23.9844C14.8169 22.871 13.9031 21.9688 12.7754 21.9688Z" fill="white" stroke="white"></path>              
                                         </svg>
                                     </div>
-                                    <span>Order History</span>
+                                    <span id="showBook">Order History</span>
+                                    <span id="notification"> </span>
                                 </div>
                             </div>
                             <div role="button" id="styles_active" class="styles_menu">
@@ -102,7 +103,7 @@
                 <div class="styles_down__right">
                     <div class="styles_dashboard">
                         <div class="styles_dashboard__inner">
-                            <h1> Welcome to Cobra LMS Dashboard</h1>
+                            <h1 style="text-align: center; font-size: 30px;"> Welcome to Cobra LMS Dashboard</h1>
                         </div>
                     </div>
                 </div>
@@ -111,7 +112,14 @@
         </div>
       </div>
     </div>
+    <div class="image-control">
+      <p class="title-control"></p>
+      <p class="description"></p>
+      <p class="image-show"></p>
+      <p class="status"> </p>
+      <p class="returnDdate"></p> 
+    </div>
     <script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script>
-    <script type="module" src="../src/user.js"></script>
+    <script src="../src/user.js"></script>
   </body>
 </html>
