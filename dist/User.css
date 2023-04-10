@@ -266,3 +266,17 @@ p {
   font-size: 20px;
   font-weight: bold;
 }
+.phone , .log  , .bookscheck{
+  text-decoration: none;
+  color:white;
+}
+.phone:hover{
+  color:white;
+}
+
+.log:hover{
+  color:white;
+}
+.bookscheck:hover{
+  color:white;
+}

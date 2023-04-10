@@ -18,6 +18,14 @@ body{
     gap:2rem
 }
 
+.launch{
+    color:white;
+    text-decoration: none;
+}
+
+.launch:hover{
+    color:white;
+}
 
 .register-left-section{
     flex:1;

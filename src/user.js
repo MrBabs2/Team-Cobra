@@ -10,6 +10,7 @@ const bookStatus = document.querySelector(".status");
 const returnBookdate = document.querySelector(".returnDdate");
 const showBook = document.querySelector("#showBook")
 const bookCover= document.querySelector(".image-show")
+const contactSupport =document.querySelector(".contact")
 
 // creating date to determine when a user logged in last into the dashboard of the library 
 const before= new Date("Mon Apr 10 2023 12:40:46")
@@ -66,3 +67,5 @@ showBook.addEventListener("click", ()=>{
 
 })
 
+
+//adding customer support functionality to call customer support 
