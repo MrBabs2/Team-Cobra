@@ -8,7 +8,7 @@ import {
     getFirestore,collection,serverTimestamp,getDocs,addDoc,getDoc,doc
 } from "firebase/firestore"
 
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {getAuth,createUserWithEmailAndPassword,signOut } from "firebase/auth"
 
 //firebase configuration 
 const firebaseConfig = {
@@ -30,13 +30,9 @@ const db = getFirestore()
 //collection reference 
 const colRef = collection(db, "users") 
 
-//initializing firebaase authentication 
+//authenticating the server 
 
-const auth = getAuth(initializeApp(firebaseConfig));
-
-//google provider 
-
-const provider = new GoogleAuthProvider(initializeApp(firebaseConfig));
+const auth = getAuth()
 
 if(navigator.geolocation)
 navigator.geolocation.getCurrentPosition(function(){
@@ -59,7 +55,11 @@ navigator.geolocation.getCurrentPosition(function(){
  const signIn = document.querySelector("#login-google");
  const terms = document.querySelector(".terms");
  const popUp = document.querySelector(".popup-wrapper");
- const popClose = document.querySelector(".popup-close")
+ const popClose = document.querySelector(".popup-close");
+ const hideSection = document.querySelector(".right-section-body");
+ const dashboard = document.querySelector("#dashboardSign")
+ 
+
  
 // regex tester for firstname and lastname
 const firstnamepattern = /^[a-zA-Z]{1,}$/ 
@@ -98,7 +98,7 @@ function  TestRegexPatterns(){
        form.inputfirstpassword.value !== form.inputconfirmpassword.value ? passwordconfirmer.style.display = "inline":passwordconfirmer.style.display = "none";
    }
 
-
+   
 
 
 form.addEventListener("submit",(e)=>{e.preventDefault()
@@ -134,32 +134,60 @@ form.addEventListener("submit",(e)=>{e.preventDefault()
  
  })
 
+// for authenticating users into their dashboard (showing that users are signed in)
+ const identify = document.querySelector(".identify")
+ const errorchanges = document.querySelector(".errorlog")
+
+   identify.addEventListener("submit", (e)=>{
+         e.preventDefault()
+         const email = identify.email.value
+         const password = identify.password.value
+         createUserWithEmailAndPassword(auth,email,password).then((cred)=>{
+           console.log(cred.user.uid)
+           identify.innerHTML=`<button class="dashboard" style=" text-decoration: none;
+      color:rgb(1,19,82) !important;
+      padding:10px;
+      border-radius: 3px;"><a href="../dist/User.Html">Login into your dashboard</a></button>` 
+         }).catch((err)=>{
+            errorchanges.textContent= err.message
+         })
+   })
 
 
 
- //adding google sign in authentication 
-signIn.addEventListener("click",()=>{
-    signInWithPopup(auth, provider)
-    .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-    }).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-    });
-})
+ //authentication for signing out users who are logged in 
 
+ const signoutUsers = document.querySelector(".controlsource")
+
+//  signoutUsers.addEventListener("click",()=>{
+//     onAuthStateChanged(auth, (user) => {
+//         if (user) {
+//           const uid = user.uid;
+//           signoutUsers.innerHTML=`<button class="dashboard" style=" text-decoration: none;
+//       color:rgb(1,19,82) !important;
+//       padding:10px;
+//       border-radius: 3px;"><a href="../dist/User.Html">Login into your dashboard</a></button>`
+//           // ...
+//         } else {
+          
+//         }
+//       });
+//  })
+
+ signoutUsers.addEventListener("click",()=>{
+    const email = identify.email.value
+    const password = identify.password.value
+    console.log(email,password)
+    signOut(auth).then(()=>{
+        errorchanges.textContent =`You have successfully signed out`
+
+    }).catch((err)=>{
+        console.log(err.message)
+    })
+ })
+
+
+ 
 
 //getting collection  data  from the firestore to showcase to the browser 
 getDocs(colRef)
@@ -221,6 +249,12 @@ popClose.addEventListener("click", ()=>{
     popUp.style.display ="none"
 })
 
+// button to control the click event on the register.html page
+signIn.addEventListener("click",()=>{
+    hideSection.style.display = "none";
+    dashboard.style.display = "block"
+    signoutUsers.style.display="block"
 
+})
 
 

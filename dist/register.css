@@ -221,6 +221,108 @@ form{
 .terms{
     cursor:pointer;
 }
+.form-user{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#exampleInputEmail1{
+  width: 400px;
+}
+
+#exampleInputPassword1{
+    width:400px;
+}
+
+/* .right-section-body{
+    display:none;
+} */
+
+/* for changing sections */
+.arrange-sign{
+    position:absolute;
+    top:30%;
+    left:45%;
+    display:block;
+}
+
+.remember{
+    margin:10px;
+}
+
+#emailchange{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#passwordchange
+{
+    font-size: 20px;
+    font-weight: bold;  
+}
+#signcharacter{
+ padding:10px;
+ width: 150px;
+}
+
+#changesign{
+    padding:10px;
+    width: 150px;
+    position: absolute;
+    top:90%;
+    left:16%;
+}
+
+/* for the new form  */
+.identify{
+    position: absolute;
+    top:40%;
+    left:50%;
+}
+.passwordmove{
+    padding:10px;
+    width:500px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.emailmove{
+    padding:10px;
+    width:500px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.controlbutton{
+    padding:10px;
+    width:200px;
+    background-color:rgb(1,19,82) !important;
+    color:white !important;
+    border-radius: 20px;
+    
+}
+.controlsource{
+    padding:10px;
+    width:200px;
+    background-color:rgb(1,19,82) !important;
+    color:white !important;
+    border-radius: 20px;
+    position: absolute;
+    top:82%;
+    left:50%;
+    display:none;
+}
+#dashboardSign{
+    display:none;
+}
+
+.errorlog{
+    color:red;
+    font-size: 20px;
+    font-weight: bold;
+}
 
 /* media queries for responsiveness */
 @media only screen and (max-width: 578px){
