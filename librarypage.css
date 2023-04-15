@@ -72,7 +72,7 @@ body {
     border: none;
     display:none;
   }
-  
+
   .borrow-btn {
     background-color: #ed8e00;
     font-weight: 600;
@@ -128,3 +128,10 @@ body {
     right: 10px;
   }
   
+   /* for the searched book */
+   .swiper-slide-control{
+    display:none;
+    position:absolute;
+    top: 35%;
+    left:47%
+  }
