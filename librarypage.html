@@ -50,20 +50,23 @@
       </nav>
     </header>
     <main>
-      <div class="form">
+      <div id="formcontrol">
         <form
           class="d-flex justify-content-end text-end align-items-center"
           action="search"
           method="get"
+          id="formbook"
+          type="submit"
         >
-          <input size="50px" type="search" name="" id="" />
-          <button type="button" class="btn btn-primary search-btn btn-sm">
-            Search
+         <!-- changes added for searching -->
+         <input size="50px" type="search" name="books"/>
+         <button type="submit" class="btn btn-primary search-btn btn-sm" id="button-search">
+           Search
           </button>
         </form>
       </div>
 
-      <div>
+      <div class="hide-swiper">
        <div class="swiper-inner">
         <div class="swiper-container mySwiper">
           <div class="swiper-wrapper">
@@ -254,6 +257,11 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
       </div>
+      
+      <div class="control-check">
+        <button class="checkout" type="submit" >Go to payment Page</button>
+      </div>
+
     </main>
 
     <script
