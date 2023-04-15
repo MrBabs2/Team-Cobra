@@ -61,6 +61,18 @@ body {
     width: 90px;
     height: 100px;
   }
+
+  .checkout{
+    margin-left:50%;
+    margin-top: 10px;
+    background-color: #ed8e00;
+    color:white;
+    border-radius: 15px;
+    padding: 10px;
+    border: none;
+    display:none;
+  }
+  
   .borrow-btn {
     background-color: #ed8e00;
     font-weight: 600;
