@@ -130,5 +130,12 @@ const viewpages = document.querySelector(".movepages")
    // for sinlge page payment 
  singlepay.addEventListener("click", makePayment)
  
- 
+  // to view all books to default 
+
+  viewpages.addEventListener("click", ()=>{
+    hideswiper.style.display = "block";
+    slidercover.style.display ="none";
+    viewpages.style.display ="none"
+   })
+    
    
