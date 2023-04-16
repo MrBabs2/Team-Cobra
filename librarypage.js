@@ -119,8 +119,10 @@ const viewpages = document.querySelector(".movepages")
     if(books.bookname == searchvalue){
      hideswiper.style.display = "none";
      slidercover.style.display ="block";
-     booktitle.textContent = books.bookname
-    }
+     booktitle.textContent = books.bookname;
+     singlepay.textContent = "Pay now ....";
+     viewpages.style.display ="block"
+        }
    })
    
   })
