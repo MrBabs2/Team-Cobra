@@ -1,0 +1,130 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'arial','sans-serif';
+    box-sizing: border-box;
+}
+
+.container::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 10;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 3, 48, 0.74);
+  }
+
+  .container{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(Images/books.jpg); 
+    background-position: center;
+    background-size: cover;
+    padding: 0 8%;
+}
+
+.navbar {
+    background-color: #000000; 
+    overflow: hidden;
+  }
+  
+  .navbar a {
+    float: left; 
+    display: block; 
+    color: white; 
+    text-align: center; 
+    padding: 14px 26px; 
+    text-decoration: none; 
+  }
+  
+  .navbar a:hover {
+    background-color: #d6d6d6; 
+    color: #ED8E00; 
+  }
+.content{
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    color: white;
+}
+
+.content h1{
+    font-size: 70px;
+    font-weight: 550;
+}
+
+.content h1 span{
+    color: #ED8E00;
+}
+
+.content button{
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 12px 25px;
+    outline: auto;
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+}
+
+.content button img{
+    width: 15px;
+    margin-left: 10px;
+}
+
+.launch-time{
+    display: flex;
+}
+
+.launch-time div{
+    flex-basis: 120px;
+}
+
+.launch-time div p{
+    font-size: 70px;
+    margin-left: -10px;
+}
+
+.rocket{
+    width: 250px;
+    position: absolute;
+    bottom: 0;
+    right: 20%;
+    animation: rocket 4s linear infinite;
+}
+
+@keyframes rocket{
+    0%{
+        bottom: 0;
+        opacity: 0;
+    }
+    100%{
+        bottom: 110%;
+        opacity: 1;
+    }
+}
+
+footer{
+    background-color: #242424;
+    padding: 25px 0;
+}
+
+footer .footer_container{
+    max-width: 1180px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer_container p{
+    vertical-align: middle;
+    margin: 0;
+}
+  
