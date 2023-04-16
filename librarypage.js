@@ -102,7 +102,13 @@
  const bookauthor = document.querySelector(".author")
  // full name of the book 
  const fullname = document.querySelector(".abstract")
- 
+ // to control the payment 
+
+// for single page payment 
+const singlepay = document.querySelector("#singlebutton")
+
+// to view all books
+const viewpages = document.querySelector(".movepages")
   form.addEventListener("submit", (e)=>{
    e.preventDefault()
    const searchvalue =form.books.value.trim()
