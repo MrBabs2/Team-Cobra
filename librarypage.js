@@ -126,6 +126,9 @@ const viewpages = document.querySelector(".movepages")
    })
    
   })
+
+   // for sinlge page payment 
+ singlepay.addEventListener("click", makePayment)
  
  
    
