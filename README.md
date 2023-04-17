@@ -168,8 +168,11 @@ Overall, I had contributions through the development lifecycle of this project a
 REFERENCES 
 
 •	What is Bootstrap (2023). Available at: https://www.w3schools.com/whatis/whatis_bootstrap.asp (Accessed: 14 April 2023).
+
 •	what is webpack - Google Search (2023). Available at: https://www.google.com/search?q=what+is+webpack+&sxsrf=APwXEdckDmL0WeS6JJB5iAXSl_jzb8vSzA%3A1681481258268&ei=Kl45ZLKCEIe4gQaF1oFI&ved=0ahUKEwiyv-Hoxan-AhUHXMAKHQVrAAkQ4dUDCA8&uact=5&oq=what+is+webpack+&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIHCAAQigUQQzIFCAAQgAQyCggAEIAEEBQQhwIyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEOgoIABBHENYEELADOgQIIxAnOgYIABAWEB46CAgAEBYQHhAPOggIABAWEB4QCjoHCCMQ6gIQJzoNCAAQjwEQ6gIQtAIYAToNCC4QjwEQ6gIQtAIYAToICAAQigUQkQI6CwguEIAEELEDEIMBOgsIABCABBCxAxCDAToNCAAQigUQsQMQgwEQQzoICAAQgAQQsQNKBAhBGABQ-QNY2CFgvCVoAnABeAWAAfkCiAG3G5IBCDEyLjEuMi42mAEAoAEBsAEUyAEIwAEB2gEGCAEQARgK&sclient=gws-wiz-serp (Accessed: 14 April 2023)
+
 •	Firebase (2023). Available at: https://docs.flutter.dev/development/data-and-backend/firebase (Accessed: 15 April 2023).
+
 •	Date-fns - modern JavaScript date utility library (2023). Available at: https://date-fns.org/ (Accessed: 14 April 2023)
 
 
