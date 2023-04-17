@@ -74,11 +74,17 @@ Modules Implemented and Methodology
 The project comprised various modules assigned to each team member for development. The key modules implemented are listed below:
 
 1.	Home Page: This module acts as the default landing page when users visit the site.
+
 2.	Register Page: This page enables users to sign up for the library system and can be accessed from the home page.
+
 3.	Login Page: Returning users can log in to the platform using this page.
+
 4.	Library Page: This module displays the available books in the library, and authenticated users can search for books and borrow them from this page.
+
 5.	User Page: Upon successful login, users are directed to this landing page.
+
 6.	Checkout Page: After borrowing a book from the library page, authenticated users are directed to this page to make payment for the book. The library page integrates a payment gateway to facilitate this process.
+
 7.	Customer Rater Page: This page allows users to rate their experience on the application with the ratings to be used to determine customer experience and acceptance of the users.
 
 During the project, each team member created a separate branch on the GitHub repository to work on their assigned pages. Commits related to their respective tasks were made on their individual branches. Additionally, the team conducted weekly sprint retrospectives where they discussed the project's progress and any issues that arose. At these meetings, the team merged their individual branches locally and referenced them in the relevant module pages, based on the project's design flow. The team completed bundles, merges, and referencing during these weekly meetings.
@@ -87,7 +93,9 @@ During the project, each team member created a separate branch on the GitHub rep
  
  
 Installing dependencies and packages
+
 To install the necessary dependencies and packages required to complete the implementation of this project, please follow these steps:
+
 1.	Open Git Bash or command line tools at the application file and run the command below to check if Node is installed: “node -v”
 
 2.	If Node is not installed on your system, download it from its official website. Otherwise, run the following command: “npm init -y”
@@ -107,6 +115,7 @@ This command sets npm run build in the package.json file under the script object
 Individual contribution
 
 OTITE AKPOFURE:
+
 For the Cobra Library Management system project, I developed the front-end registration functionality using HTML, CSS, and JavaScript, with register.html, register.css, and register.js files. These files were used to create input elements that collected and retrieved user information, which was then saved onto the Firebase Realtime database.
 To authenticate users, I set up a custom domain under Firebase, which was implemented by setting up a live server that provided a localhost domain at 127.0.0.1:5500. A live server can be implemented by either downloading its extension on VS Code or running the command "npm i live-server -g".
 In the register.js file, I set up a regular expression (regex) expression for client-side authentication. This was done to check all input fields by the user and obtain user information while marking all fields as required. Additionally, I set up the Geolocation API to obtain the location of users and the local storage API to store users’ information on their browsers.
@@ -114,21 +123,22 @@ On the library.js page, I created a payment button that could only be displayed 
 On the user.js file, I set up an event listener on the order history to showcase the borrowed book by the user. I also set up a return date function for the book by using the DateFns Library to calculate the time for returning the book.
 On the GitHub repository, I established the Register and backend branches. Additionally, I ensured that both the backend and frontend were appropriately bundled and working synchronously.
 
-![](images/you-picture.png)
- 
 OLUWATOMI BABATUNDE
+
 I utilized HTML, CSS, and JavaScript to develop multiple pages for the application. One of these pages is the user landing page, which users are directed to after logging in successfully. The landing page includes a sidebar with buttons for navigating to the home page, order history, library page, logging out, and contacting support.
 Furthermore, I created the login page, which includes a random quote generator and a cookies consent function. I also built a customer rating page that allows users to rate their experience with the application. This rating system helps to evaluate users' acceptance of the application. All these pages were created during the development session and are visible in the commits on the GitHub repository where I created the User-Dashboard and Login-Home-Page Branches.
 Throughout the project's life cycle, I played an active role in the application's design process and served as the UAT tester. As part of my responsibilities, I performed both functional and end-to-end tests to ensure the application's smooth operation.
 To guarantee that the changes made did not affect any existing functionalities, I conducted tests on every module bundling. Whenever I discovered any issues, I collaborated with the team to make the necessary corrections. My aim was to ensure that the application was always functioning optimally and that any issues were quickly resolved.
  
 OMONIYI ADEOLA IBIYEYE
+
 As part of my project responsibilities, I developed the library page that enables logged-in users to search for and borrow books. Leveraging HTML, CSS, and JavaScript, I focused on ensuring the page is both functional and user-friendly.
 Specifically, I made sure that the carousel on the library page is operational and introduced a search bar that enables users to scour the library's database for books. In addition to a navigation bar, the page features a search form and a section dedicated to showcasing books.
 To enhance user-friendliness, I integrated a swiper container that displays available books in the library. Each book is presented in a card format, which features the book's title, author, image, and a button for borrowing the book. Throughout the project, I aimed to improve the library page's overall user experience and functionality. To accomplish this, I created a dedicated branch on the GitHub repository called Library-Page. This branch served as a space where I made all the essential commits related to the Library Page.
 In addition to my frontend development duties, I actively participated in sprint retrospectives for the project. This involvement helped me improve my backend development skills while also allowing me to conduct user testing on other modules. My overall aim was to optimize the user experience and functionality of the entire application.
  
 EMMANUEL BAMBI ADEBAYO
+
 Throughout the initial research and ideation stage of the project, I actively participated in gathering requirements, researching industry standards, and brainstorming design ideas for a website for a library management system. Working collaboratively with other team members, we identified functionalities to be deployed for this project. Additionally, I conducted user research to gain a better understanding of user behaviors and preferences, providing valuable insights and ideas that helped jumpstart the project's design, implementation, and development.
 I also designed the user interfaces for each module of the project using Figma, which provided a user-friendly and clear interface. I developed the Launching Soon page that includes a countdown timer, redirecting users to a launch page for services that are not yet finalized. The countdown timer was implemented using JavaScript to update in real-time. Furthermore, I created the home page of the website using Bootstrap, CSS, and HTML. This page is the library management system's index page, and the first page users see when they visit the site.
 
@@ -137,10 +147,14 @@ Overall, I had contributions through the development lifecycle of this project a
  
 
 REFERENCES 
+
 •	What is Bootstrap (2023). Available at: https://www.w3schools.com/whatis/whatis_bootstrap.asp (Accessed: 14 April 2023).
 •	what is webpack - Google Search (2023). Available at: https://www.google.com/search?q=what+is+webpack+&sxsrf=APwXEdckDmL0WeS6JJB5iAXSl_jzb8vSzA%3A1681481258268&ei=Kl45ZLKCEIe4gQaF1oFI&ved=0ahUKEwiyv-Hoxan-AhUHXMAKHQVrAAkQ4dUDCA8&uact=5&oq=what+is+webpack+&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIHCAAQigUQQzIFCAAQgAQyCggAEIAEEBQQhwIyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEOgoIABBHENYEELADOgQIIxAnOgYIABAWEB46CAgAEBYQHhAPOggIABAWEB4QCjoHCCMQ6gIQJzoNCAAQjwEQ6gIQtAIYAToNCC4QjwEQ6gIQtAIYAToICAAQigUQkQI6CwguEIAEELEDEIMBOgsIABCABBCxAxCDAToNCAAQigUQsQMQgwEQQzoICAAQgAQQsQNKBAhBGABQ-QNY2CFgvCVoAnABeAWAAfkCiAG3G5IBCDEyLjEuMi42mAEAoAEBsAEUyAEIwAEB2gEGCAEQARgK&sclient=gws-wiz-serp (Accessed: 14 April 2023)
 •	Firebase (2023). Available at: https://docs.flutter.dev/development/data-and-backend/firebase (Accessed: 15 April 2023).
 •	Date-fns - modern JavaScript date utility library (2023). Available at: https://date-fns.org/ (Accessed: 14 April 2023)
+
+
+![image](https://user-images.githubusercontent.com/123475070/232367650-08e11d23-8999-48e2-9c10-4af4276a4828.png)
 
 
 
