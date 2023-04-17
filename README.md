@@ -117,35 +117,52 @@ Individual contribution
 OTITE AKPOFURE:
 
 For the Cobra Library Management system project, I developed the front-end registration functionality using HTML, CSS, and JavaScript, with register.html, register.css, and register.js files. These files were used to create input elements that collected and retrieved user information, which was then saved onto the Firebase Realtime database.
+
 To authenticate users, I set up a custom domain under Firebase, which was implemented by setting up a live server that provided a localhost domain at 127.0.0.1:5500. A live server can be implemented by either downloading its extension on VS Code or running the command "npm i live-server -g".
 In the register.js file, I set up a regular expression (regex) expression for client-side authentication. This was done to check all input fields by the user and obtain user information while marking all fields as required. Additionally, I set up the Geolocation API to obtain the location of users and the local storage API to store users’ information on their browsers.
+
 On the library.js page, I created a payment button that could only be displayed if a user borrowed a book. When the button was clicked, it displayed the Flutterwave payment integration page for collecting payment from users and sending a confirmation email of payment receipt to users. It's important to note that this is a Flutterwave payment integration API, which can be used for payment testing with only testing cards available. Testing cards can be found here: https://developer.flutterwave.com/docs/integration-guides/testing-helpers/.
+
 On the user.js file, I set up an event listener on the order history to showcase the borrowed book by the user. I also set up a return date function for the book by using the DateFns Library to calculate the time for returning the book.
 On the GitHub repository, I established the Register and backend branches. Additionally, I ensured that both the backend and frontend were appropriately bundled and working synchronously.
 
-![](Library.png)
+![](Register.png)
 
 OLUWATOMI BABATUNDE
 
 I utilized HTML, CSS, and JavaScript to develop multiple pages for the application. One of these pages is the user landing page, which users are directed to after logging in successfully. The landing page includes a sidebar with buttons for navigating to the home page, order history, library page, logging out, and contacting support.
+
 Furthermore, I created the login page, which includes a random quote generator and a cookies consent function. I also built a customer rating page that allows users to rate their experience with the application. This rating system helps to evaluate users' acceptance of the application. All these pages were created during the development session and are visible in the commits on the GitHub repository where I created the User-Dashboard and Login-Home-Page Branches.
+
 Throughout the project's life cycle, I played an active role in the application's design process and served as the UAT tester. As part of my responsibilities, I performed both functional and end-to-end tests to ensure the application's smooth operation.
+
 To guarantee that the changes made did not affect any existing functionalities, I conducted tests on every module bundling. Whenever I discovered any issues, I collaborated with the team to make the necessary corrections. My aim was to ensure that the application was always functioning optimally and that any issues were quickly resolved.
+
+![](User.png)
  
 OMONIYI ADEOLA IBIYEYE
 
 As part of my project responsibilities, I developed the library page that enables logged-in users to search for and borrow books. Leveraging HTML, CSS, and JavaScript, I focused on ensuring the page is both functional and user-friendly.
+
 Specifically, I made sure that the carousel on the library page is operational and introduced a search bar that enables users to scour the library's database for books. In addition to a navigation bar, the page features a search form and a section dedicated to showcasing books.
+
 To enhance user-friendliness, I integrated a swiper container that displays available books in the library. Each book is presented in a card format, which features the book's title, author, image, and a button for borrowing the book. Throughout the project, I aimed to improve the library page's overall user experience and functionality. To accomplish this, I created a dedicated branch on the GitHub repository called Library-Page. This branch served as a space where I made all the essential commits related to the Library Page.
+
 In addition to my frontend development duties, I actively participated in sprint retrospectives for the project. This involvement helped me improve my backend development skills while also allowing me to conduct user testing on other modules. My overall aim was to optimize the user experience and functionality of the entire application.
+
+![](Library.png)
  
 EMMANUEL BAMBI ADEBAYO
 
 Throughout the initial research and ideation stage of the project, I actively participated in gathering requirements, researching industry standards, and brainstorming design ideas for a website for a library management system. Working collaboratively with other team members, we identified functionalities to be deployed for this project. Additionally, I conducted user research to gain a better understanding of user behaviors and preferences, providing valuable insights and ideas that helped jumpstart the project's design, implementation, and development.
+
 I also designed the user interfaces for each module of the project using Figma, which provided a user-friendly and clear interface. I developed the Launching Soon page that includes a countdown timer, redirecting users to a launch page for services that are not yet finalized. The countdown timer was implemented using JavaScript to update in real-time. Furthermore, I created the home page of the website using Bootstrap, CSS, and HTML. This page is the library management system's index page, and the first page users see when they visit the site.
 
 Furthermore, I established a GitHub repository and extended invitations to other team members to collaborate on the project. Additionally, I created a dedicated branch on this repository where I made commits concerning the developed pages.
+
 Overall, I had contributions through the development lifecycle of this project and the designs created using Figma served as a template for guiding team members as they previewed the website prototype and developed their respective pages for the project.
+
+![](Bambs.png)
  
 
 REFERENCES 
