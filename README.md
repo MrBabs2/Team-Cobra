@@ -123,6 +123,8 @@ On the library.js page, I created a payment button that could only be displayed 
 On the user.js file, I set up an event listener on the order history to showcase the borrowed book by the user. I also set up a return date function for the book by using the DateFns Library to calculate the time for returning the book.
 On the GitHub repository, I established the Register and backend branches. Additionally, I ensured that both the backend and frontend were appropriately bundled and working synchronously.
 
+![](Library.png)
+
 OLUWATOMI BABATUNDE
 
 I utilized HTML, CSS, and JavaScript to develop multiple pages for the application. One of these pages is the user landing page, which users are directed to after logging in successfully. The landing page includes a sidebar with buttons for navigating to the home page, order history, library page, logging out, and contacting support.
