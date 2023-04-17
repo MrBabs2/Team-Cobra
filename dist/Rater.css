@@ -11,7 +11,7 @@ body{
 
 
  .styles_home {
-    height: 100vh;
+    height: 86vh;
     background: linear-gradient(to bottom, rgba(12, 39, 69, 0) 0%, #011352 100%), url(./Images/home.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -35,7 +35,7 @@ body{
 }
 
 .nav-link{
-    margin-right: 50px;
+    margin-right: -90px;
     font-weight: 700;
     font-size: 0.8em;
 }
@@ -50,4 +50,30 @@ body{
     border-radius: 5px;
 }
    
+
    
+.star{
+    color: goldenrod;
+    font-size: 2.0rem;
+    padding: 0 1rem; /* space out the stars */
+  }
+  .star::before{
+    content: '\2606';    /* star outline */
+    cursor: pointer;
+  }
+  .star.rated::before{
+    /* the style for a selected star */
+    content: '\2605';  /* filled star */
+  }
+  
+  .stars{
+      counter-reset: rateme 0;   
+      font-size: 2.0rem;
+      font-weight: 900;
+  }
+  .star.rated{
+      counter-increment: rateme 1;
+  }
+  .stars::after{
+      content: counter(rateme) '/5';
+  }

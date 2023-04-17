@@ -10,11 +10,11 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="index.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./Rater.css" />
+    <title>Rater Page</title>
   </head>
   <body>
-      <header>
+    <header>
         <nav class="navbar navbar-expand-lg bg-light shadow-sm">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">Cobra Library Management System</a>
@@ -33,15 +33,9 @@
               class="collapse navbar-collapse justify-content-around"
               id="navbarNavAltMarkup"
             >
-              <div class="navbar-nav">
-                <a class="nav-link" href="#">HOME</a>
-                <a class="nav-link" href="./librarypage.html">LIBRARY</a>
-                <a class="nav-link active" aria-current="page" href="./Login.html"
-                  >LOG IN</a
-                >
-                <a class="nav-link signup-btn" href="./register.html"
-                  >SIGN UP
-                  <img class="arrow-img" src="arrow-right.svg" alt="" />
+              <div class="navbar-nav"> 
+                <a class="nav-link signup-btn" href="./Home.html">
+                  HOME
                 </a>
               </div>
             </div>
@@ -50,14 +44,27 @@
       </header>
       <main> 
     </div>
-    <div class = "styles_home">
-        <h1>Cobra Library Management System</h1>
-        <p>A place to get all books...</p>
+
+     <div class="styles_home">
+         <h1>Customer Rating System</h1>
+        <div class="stars" data-rating="3">
+            <span class="star">&nbsp;</span>
+            <span class="star">&nbsp;</span>
+            <span class="star">&nbsp;</span>
+            <span class="star">&nbsp;</span>
+            <span class="star">&nbsp;</span>
+        </div>
+        <p>Thank You For Visiting Cobra Libray Management System. </p>
+        <p>We hope to have you back </p>
+
     </div>
+    
+    <script src="../src/Rater.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script>
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"
+    >
+    </script>
   </body>
 </html>

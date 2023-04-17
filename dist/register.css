@@ -6,14 +6,14 @@
 
 
 body{
-    background-color: #306789 !important;
-}
-
-.main-section{
-    height: 100vh;
     background: url(https://res.cloudinary.com/innov8it/image/upload/v1680588425/back_hdk47z.png);
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.main-section{
     display:flex;
     gap:2rem
 }
@@ -54,9 +54,8 @@ the images are hosted on cloudinary  */
 .right-section{
     flex:2;
     display:flex;
-    gap:1rem;
+    gap:5rem;
     flex-direction: column;
-    background: linear-gradient(to left , rgb(253, 227, 203),#ffffff);
     padding: 30px;
     border-radius: 5% 0% 0% 0%;
     height: 100vh;
@@ -304,16 +303,10 @@ form{
     
 }
 .controlsource{
-    padding:10px;
-    width:200px;
-    background-color:rgb(1,19,82) !important;
-    color:white !important;
-    border-radius: 20px;
-    position: absolute;
     top:82%;
     left:50%;
-    display:none;
 }
+
 #dashboardSign{
     display:none;
 }

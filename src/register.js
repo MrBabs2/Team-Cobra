@@ -140,17 +140,20 @@ form.addEventListener("submit",(e)=>{e.preventDefault()
 
    identify.addEventListener("submit", (e)=>{
          e.preventDefault()
+        
          const email = identify.email.value
          const password = identify.password.value
+        
          createUserWithEmailAndPassword(auth,email,password).then((cred)=>{
-           console.log(cred.user.uid)
-           identify.innerHTML=`<button class="dashboard" style=" text-decoration: none;
-      color:rgb(1,19,82) !important;
-      padding:10px;
-      border-radius: 3px;"><a href="../dist/User.Html">Login into your dashboard</a></button>` 
-         }).catch((err)=>{
-            errorchanges.textContent= err.message
-         })
+            console.log(cred.user.uid)
+            identify.innerHTML=`<button class="dashboard" style=" text-decoration: none;
+       color:rgb(1,19,82) !important;
+       padding:10px;
+       border-radius: 3px;"><a href="../dist/User.Html">Login into your dashboard</a></button>` 
+          }).catch((err)=>{
+             errorchanges.textContent= err.message
+          })
+         
    })
 
 
@@ -175,6 +178,7 @@ form.addEventListener("submit",(e)=>{e.preventDefault()
 //  })
 
  signoutUsers.addEventListener("click",()=>{
+   
     const email = identify.email.value
     const password = identify.password.value
     console.log(email,password)

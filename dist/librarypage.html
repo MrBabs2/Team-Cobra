@@ -40,9 +40,7 @@
           >
             <div class="navbar-nav align-items-center">
               <a class="nav-link active" aria-current="page" href="./Home.html">HOME</a>
-              <a class="nav-link" href="#">LIBRARY</a>
-              <a class="nav-link" href="#">ABOUT</a>
-              <a class="nav-link user-profile" href="#"
+              <a class="nav-link user-profile" href="./User.Html"
                 >User <br />
                 Profile</a
               >
@@ -52,20 +50,23 @@
       </nav>
     </header>
     <main>
-      <div class="form">
+      <div id="formcontrol">
         <form
           class="d-flex justify-content-end text-end align-items-center"
           action="search"
           method="get"
+          id="formbook"
+          type="submit"
         >
-          <input size="50px" type="search" name="" id="" />
-          <button type="button" class="btn btn-primary search-btn btn-sm">
-            Search
+        <!-- changes added for searching -->
+        <input size="50px" type="search" name="books"/>
+        <button type="submit" class="btn btn-primary search-btn btn-sm" id="button-search">
+          Search        
           </button>
         </form>
       </div>
 
-      <div>
+      <div class="hide-swiper">
        <div class="swiper-inner">
         <div class="swiper-container mySwiper">
           <div class="swiper-wrapper">
@@ -260,7 +261,27 @@
       <div class="control-check">
           <button class="checkout" type="submit" >Go to payment Page</button>
       </div>
+     
     </main>
+    <div class="swiper-slide-control">
+      <div class="cards">
+        <img src="image 3.png" alt="" class="book-img" />
+        <div>
+          <h5 style="font-weight: 700" class="book-title"></h5>
+          <p>
+            <strong class="author">wireshark</strong> <br />
+            <span style="font-size: 14px; font-weight: 400"
+              class="abstract">How to be a spoff master</span
+            >
+          </p>
+          <div class="btn-wrap">
+            <button class="borrow-btn me-2 singlepay" id="singlebutton" >Borrow</button
+            ><a href="#"><img src="heart.svg" alt="" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="movepages">View all books</button>
     <!-- <script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script> -->
     <script src="../src/librarypage.js"></script>
     
