@@ -123,7 +123,7 @@ On the library.js page, I created a payment button that could only be displayed 
 On the user.js file, I set up an event listener on the order history to showcase the borrowed book by the user. I also set up a return date function for the book by using the DateFns Library to calculate the time for returning the book.
 On the GitHub repository, I established the Register and backend branches. Additionally, I ensured that both the backend and frontend were appropriately bundled and working synchronously.
 
-![](Team-Cobra/Library.png)
+![](Library.png)
 
 OLUWATOMI BABATUNDE
 
