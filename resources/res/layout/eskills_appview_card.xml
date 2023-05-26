@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageView android:layout_gravity="center_horizontal" android:id="@+id/triangle_top" android:layout_width="48dp" android:layout_height="16dp" android:layout_marginBottom="-2dp" android:src="@drawable/background_triangle_top"/>
+    <FrameLayout android:background="@drawable/eskills_card" android:layout_width="match_parent" android:layout_height="80dp">
+        <include android:id="@+id/card_content" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/eskills_appview_card_content"/>
+    </FrameLayout>
+</LinearLayout>

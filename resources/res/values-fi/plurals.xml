@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="timeline_short_comment">
+        <item quantity="one">1 kommentti</item>
+        <item quantity="other">%d kommenttia</item>
+    </plurals>
+    <plurals name="updates_notification_body">
+        <item quantity="one">Sinulla on %d päivitys asennettavaksi</item>
+        <item quantity="other">Sinulla on %d päivitystä asennettavaksi</item>
+    </plurals>
+</resources>

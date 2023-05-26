@@ -1,0 +1,2013 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="12010" android:versionName="9.20.6.1" android:compileSdkVersion="28" android:compileSdkVersionCodename="9" package="cm.aptoide.pt" platformBuildVersionCode="28" platformBuildVersionName="9">
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="25"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_SYNC_STATS"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <application android:theme="@style/AppBaseTheme.NoTitle.Transparent" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:name="p015cm.aptoide.p016pt.NotificationApplicationView" android:allowBackup="false" android:supportsRtl="true" android:networkSecurityConfig="@xml/network_security_config" android:appComponentFactory="androidx.core.app.CoreComponentFactory">
+        <activity android:theme="@style/AppBaseTheme" android:name="p015cm.aptoide.p016pt.view.MainActivity" android:launchMode="singleTask" android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts"/>
+        </activity>
+        <activity android:theme="@style/Aptoide.WalletDialogTheme" android:name="p015cm.aptoide.p016pt.wallet.WalletInstallActivity" android:taskAffinity=".wallet.WalletInstallActivity" android:excludeFromRecents="true" android:windowSoftInputMode="adjustPan"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-5389160260063028~2982824200"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <service android:name="p015cm.aptoide.p016pt.account.AccountAuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator"/>
+            </intent-filter>
+            <meta-data android:name="android.accounts.AccountAuthenticator" android:resource="@xml/authenticator"/>
+        </service>
+        <provider android:name="p015cm.aptoide.p016pt.toolbox.ToolboxContentProvider" android:exported="true" android:authorities="cm.aptoide.pt.StubProvider"/>
+        <provider android:name="androidx.core.content.FileProvider" android:exported="false" android:authorities="cm.aptoide.pt.provider" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
+        </provider>
+        <meta-data android:name="p015cm.aptoide.p016pt.networking.image.GlideModifications" android:value="GlideModule"/>
+        <activity android:name="p015cm.aptoide.p016pt.account.view.LoginActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:theme="@style/com_facebook_activity_theme" android:name="com.facebook.FacebookActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.facebook.CustomTabActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="@string/fb_login_protocol_scheme"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="fbconnect" android:host="cct.cm.aptoide.pt"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="p015cm.aptoide.p016pt.DeepLinkIntentReceiver" android:exported="true" android:taskAffinity=".DeepLinkIntentReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:mimeType="application/vnd.cm.aptoide.pt" android:scheme="file"/>
+                <data android:mimeType="application/vnd.cm.aptoide.pt" android:scheme="http"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="aptoide"/>
+                <data android:scheme="aptoiderepo"/>
+                <data android:scheme="aptoideinstall"/>
+                <data android:scheme="aptoideauth"/>
+                <data android:scheme="aptoidesearch"/>
+                <data android:scheme="aptoidefeature"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="market"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="app.aptoide.com"/>
+                <data android:scheme="https" android:host="app.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="market.android.com"/>
+                <data android:scheme="https" android:host="market.android.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="webservices.aptoide.com" android:pathPrefix="/apkinstall"/>
+                <data android:scheme="https" android:host="webservices.aptoide.com" android:pathPrefix="/apkinstall"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="play.google.com"/>
+                <data android:scheme="https" android:host="play.google.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.en.aptoide.com"/>
+                <data android:scheme="https" android:host="*.en.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.pt.aptoide.com"/>
+                <data android:scheme="https" android:host="*.pt.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.br.aptoide.com"/>
+                <data android:scheme="https" android:host="*.br.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.fr.aptoide.com"/>
+                <data android:scheme="https" android:host="*.fr.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.es.aptoide.com"/>
+                <data android:scheme="https" android:host="*.es.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.mx.aptoide.com"/>
+                <data android:scheme="https" android:host="*.mx.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.de.aptoide.com"/>
+                <data android:scheme="https" android:host="*.de.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.it.aptoide.com"/>
+                <data android:scheme="https" android:host="*.it.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.ru.aptoide.com"/>
+                <data android:scheme="https" android:host="*.ru.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.sa.aptoide.com"/>
+                <data android:scheme="https" android:host="*.sa.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.id.aptoide.com"/>
+                <data android:scheme="https" android:host="*.id.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.in.aptoide.com"/>
+                <data android:scheme="https" android:host="*.in.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.bd.aptoide.com"/>
+                <data android:scheme="https" android:host="*.bd.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.mr.aptoide.com"/>
+                <data android:scheme="https" android:host="*.mr.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.pa.aptoide.com"/>
+                <data android:scheme="https" android:host="*.pa.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.my.aptoide.com"/>
+                <data android:scheme="https" android:host="*.my.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.th.aptoide.com"/>
+                <data android:scheme="https" android:host="*.th.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.vn.aptoide.com"/>
+                <data android:scheme="https" android:host="*.vn.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.tr.aptoide.com"/>
+                <data android:scheme="https" android:host="*.tr.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.cn.aptoide.com"/>
+                <data android:scheme="https" android:host="*.cn.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.ro.aptoide.com"/>
+                <data android:scheme="https" android:host="*.ro.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.mm.aptoide.com"/>
+                <data android:scheme="https" android:host="*.mm.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.pl.aptoide.com"/>
+                <data android:scheme="https" android:host="*.pl.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.rs.aptoide.com"/>
+                <data android:scheme="https" android:host="*.rs.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.hu.aptoide.com"/>
+                <data android:scheme="https" android:host="*.hu.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.gr.aptoide.com"/>
+                <data android:scheme="https" android:host="*.gr.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.bg.aptoide.com"/>
+                <data android:scheme="https" android:host="*.bg.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.nl.aptoide.com"/>
+                <data android:scheme="https" android:host="*.nl.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.ir.aptoide.com"/>
+                <data android:scheme="https" android:host="*.ir.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.jp.aptoide.com"/>
+                <data android:scheme="https" android:host="*.jp.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.kr.aptoide.com"/>
+                <data android:scheme="https" android:host="*.kr.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*.ua.aptoide.com"/>
+                <data android:scheme="https" android:host="*.ua.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="en.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="en.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pt.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="pt.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="br.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="br.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="fr.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="fr.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="es.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="es.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mx.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="mx.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="de.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="de.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="it.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="it.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ru.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="ru.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="sa.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="sa.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="id.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="id.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="in.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="in.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="bd.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="bd.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mr.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="mr.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pa.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="pa.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="my.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="my.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="th.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="th.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="vn.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="vn.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="tr.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="tr.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="cn.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="cn.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ro.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="ro.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mm.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="mm.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pl.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="pl.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="rs.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="rs.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="hu.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="hu.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="gr.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="gr.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="bg.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="bg.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="nl.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="nl.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ir.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="ir.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="jp.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="jp.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="kr.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="kr.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ua.aptoide.com" android:pathPattern="/store/..*"/>
+                <data android:scheme="https" android:host="ua.aptoide.com" android:pathPattern="/store/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="en.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="en.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pt.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="pt.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="br.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="br.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="fr.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="fr.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="es.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="es.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mx.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="mx.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="de.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="de.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="it.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="it.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ru.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="ru.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="sa.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="sa.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="id.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="id.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="in.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="in.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="bd.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="bd.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mr.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="mr.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pa.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="pa.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="my.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="my.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="th.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="th.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="vn.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="vn.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="tr.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="tr.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="cn.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="cn.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ro.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="ro.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mm.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="mm.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pl.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="pl.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="rs.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="rs.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="hu.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="hu.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="gr.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="gr.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="bg.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="bg.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="nl.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="nl.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ir.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="ir.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="jp.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="jp.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="kr.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="kr.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ua.aptoide.com" android:pathPattern="/thank-you*"/>
+                <data android:scheme="https" android:host="ua.aptoide.com" android:pathPattern="/thank-you*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="en.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="en.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pt.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="pt.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="br.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="br.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="fr.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="fr.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="es.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="es.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mx.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="mx.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="de.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="de.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="it.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="it.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ru.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="ru.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="sa.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="sa.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="id.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="id.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="in.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="in.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="bd.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="bd.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mr.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="mr.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pa.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="pa.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="my.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="my.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="th.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="th.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="vn.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="vn.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="tr.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="tr.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="cn.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="cn.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ro.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="ro.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mm.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="mm.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pl.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="pl.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="rs.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="rs.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="hu.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="hu.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="gr.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="gr.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="bg.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="bg.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="nl.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="nl.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ir.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="ir.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="jp.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="jp.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="kr.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="kr.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ua.aptoide.com" android:pathPattern="/appcoins"/>
+                <data android:scheme="https" android:host="ua.aptoide.com" android:pathPattern="/appcoins"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="community.aptoide.com" android:pathPattern="/using-appcoins*"/>
+                <data android:scheme="https" android:host="community.aptoide.com" android:pathPattern="/using-appcoins*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="become-a-power-gamer.aptoide.com" android:pathPattern="/using-appcoins*"/>
+                <data android:scheme="https" android:host="become-a-power-gamer.aptoide.com" android:pathPattern="/using-appcoins*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="en.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="en.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pt.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="pt.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="br.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="br.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="fr.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="fr.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="es.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="es.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mx.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="mx.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="de.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="de.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="it.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="it.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ru.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="ru.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="sa.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="sa.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="id.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="id.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="in.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="in.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="bd.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="bd.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mr.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="mr.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pa.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="pa.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="my.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="my.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="th.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="th.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="vn.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="vn.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="tr.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="tr.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="cn.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="cn.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ro.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="ro.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mm.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="mm.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pl.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="pl.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="rs.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="rs.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="hu.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="hu.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="gr.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="gr.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="bg.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="bg.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="nl.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="nl.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ir.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="ir.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="jp.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="jp.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="kr.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="kr.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ua.aptoide.com" android:pathPattern="/download*"/>
+                <data android:scheme="https" android:host="ua.aptoide.com" android:pathPattern="/download*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="en.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="en.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pt.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="pt.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="br.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="br.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="fr.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="fr.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="es.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="es.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mx.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="mx.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="de.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="de.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="it.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="it.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ru.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="ru.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="sa.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="sa.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="id.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="id.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="in.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="in.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="bd.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="bd.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mr.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="mr.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pa.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="pa.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="my.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="my.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="th.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="th.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="vn.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="vn.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="tr.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="tr.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="cn.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="cn.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ro.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="ro.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mm.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="mm.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pl.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="pl.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="rs.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="rs.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="hu.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="hu.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="gr.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="gr.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="bg.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="bg.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="nl.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="nl.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ir.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="ir.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="jp.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="jp.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="kr.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="kr.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ua.aptoide.com" android:pathPattern="/editorial/..*"/>
+                <data android:scheme="https" android:host="ua.aptoide.com" android:pathPattern="/editorial/..*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="en.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="en.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pt.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="pt.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="br.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="br.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="fr.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="fr.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="es.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="es.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mx.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="mx.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="de.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="de.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="it.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="it.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ru.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="ru.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="sa.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="sa.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="id.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="id.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="in.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="in.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="bd.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="bd.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mr.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="mr.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pa.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="pa.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="my.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="my.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="th.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="th.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="vn.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="vn.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="tr.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="tr.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="cn.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="cn.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ro.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="ro.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mm.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="mm.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pl.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="pl.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="rs.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="rs.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="hu.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="hu.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="gr.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="gr.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="bg.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="bg.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="nl.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="nl.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ir.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="ir.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="jp.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="jp.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="kr.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="kr.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ua.aptoide.com" android:pathPattern="/app"/>
+                <data android:scheme="https" android:host="ua.aptoide.com" android:pathPattern="/app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="en.aptoide.com"/>
+                <data android:scheme="https" android:host="en.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pt.aptoide.com"/>
+                <data android:scheme="https" android:host="pt.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="br.aptoide.com"/>
+                <data android:scheme="https" android:host="br.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="fr.aptoide.com"/>
+                <data android:scheme="https" android:host="fr.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="es.aptoide.com"/>
+                <data android:scheme="https" android:host="es.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mx.aptoide.com"/>
+                <data android:scheme="https" android:host="mx.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="de.aptoide.com"/>
+                <data android:scheme="https" android:host="de.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="it.aptoide.com"/>
+                <data android:scheme="https" android:host="it.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ru.aptoide.com"/>
+                <data android:scheme="https" android:host="ru.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="sa.aptoide.com"/>
+                <data android:scheme="https" android:host="sa.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="id.aptoide.com"/>
+                <data android:scheme="https" android:host="id.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="in.aptoide.com"/>
+                <data android:scheme="https" android:host="in.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="bd.aptoide.com"/>
+                <data android:scheme="https" android:host="bd.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mr.aptoide.com"/>
+                <data android:scheme="https" android:host="mr.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pa.aptoide.com"/>
+                <data android:scheme="https" android:host="pa.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="my.aptoide.com"/>
+                <data android:scheme="https" android:host="my.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="th.aptoide.com"/>
+                <data android:scheme="https" android:host="th.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="vn.aptoide.com"/>
+                <data android:scheme="https" android:host="vn.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="tr.aptoide.com"/>
+                <data android:scheme="https" android:host="tr.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="cn.aptoide.com"/>
+                <data android:scheme="https" android:host="cn.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ro.aptoide.com"/>
+                <data android:scheme="https" android:host="ro.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="mm.aptoide.com"/>
+                <data android:scheme="https" android:host="mm.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="pl.aptoide.com"/>
+                <data android:scheme="https" android:host="pl.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="rs.aptoide.com"/>
+                <data android:scheme="https" android:host="rs.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="hu.aptoide.com"/>
+                <data android:scheme="https" android:host="hu.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="gr.aptoide.com"/>
+                <data android:scheme="https" android:host="gr.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="bg.aptoide.com"/>
+                <data android:scheme="https" android:host="bg.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="nl.aptoide.com"/>
+                <data android:scheme="https" android:host="nl.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ir.aptoide.com"/>
+                <data android:scheme="https" android:host="ir.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="jp.aptoide.com"/>
+                <data android:scheme="https" android:host="jp.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="kr.aptoide.com"/>
+                <data android:scheme="https" android:host="kr.aptoide.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="ua.aptoide.com"/>
+                <data android:scheme="https" android:host="ua.aptoide.com"/>
+            </intent-filter>
+        </activity>
+        <receiver android:name="p015cm.aptoide.p016pt.install.InstalledBroadcastReceiver">
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <action android:name="android.intent.action.PACKAGE_REPLACED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="p015cm.aptoide.p016pt.notification.PullingContentService"/>
+        <receiver android:name="p015cm.aptoide.p016pt.notification.NotificationReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="p015cm.aptoide.p016pt.link.CustomTabNativeReceiver"/>
+        <receiver android:name="p015cm.aptoide.p016pt.install.CheckRootOnBoot">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.REBOOT"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="p015cm.aptoide.p016pt.install.RootInstallNotificationEventReceiver"/>
+        <service android:name="p015cm.aptoide.p016pt.install.DownloadService"/>
+        <service android:name="p015cm.aptoide.p016pt.install.InstalledIntentService"/>
+        <receiver android:label="Aptoide Search" android:name="p015cm.aptoide.p016pt.widget.SearchWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.ACTION_WIDGET_RECEIVER"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_search_app"/>
+        </receiver>
+        <activity android:name="cm.aptoide.aptoideviews.base.MockActivity"/>
+        <activity android:name="com.facebook.CustomTabMainActivity"/>
+        <provider android:name="com.facebook.internal.FacebookInitProvider" android:exported="false" android:authorities="cm.aptoide.pt.FacebookInitProvider"/>
+        <receiver android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:theme="@style/Theme.Translucent.NoTitleBar" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:exported="false" android:excludeFromRecents="true"/>
+        <service android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" android:exported="true"/>
+        <activity android:theme="@style/Theme.Translucent.NoTitleBar" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:exported="false"/>
+        <activity android:theme="@style/Theme.Translucent" android:name="com.google.android.gms.ads.AdActivity" android:exported="false" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+        <provider android:name="com.google.android.gms.ads.MobileAdsInitProvider" android:exported="false" android:authorities="cm.aptoide.pt.mobileadsinitprovider" android:initOrder="100"/>
+        <service android:name="androidx.work.impl.background.systemalarm.SystemAlarmService" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:directBootAware="false"/>
+        <service android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:directBootAware="false"/>
+        <receiver android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver" android:enabled="true" android:exported="false" android:directBootAware="false"/>
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy" android:enabled="false" android:exported="false" android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy" android:enabled="false" android:exported="false" android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY"/>
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy" android:enabled="false" android:exported="false" android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy" android:enabled="false" android:exported="false" android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver" android:enabled="false" android:exported="false" android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:directBootAware="false">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies"/>
+            </intent-filter>
+        </receiver>
+        <provider android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer" android:exported="false" android:multiprocess="true" android:authorities="cm.aptoide.pt.lifecycle-process"/>
+        <service android:name="androidx.room.MultiInstanceInvalidationService" android:exported="false"/>
+        <provider android:name="com.flurry.android.agent.FlurryContentProvider" android:exported="false" android:authorities="cm.aptoide.pt.FlurryContentProvider"/>
+        <service android:name="com.liulishuo.filedownloader.services.FileDownloadService$SharedMainProcessService"/>
+        <service android:name="com.liulishuo.filedownloader.services.FileDownloadService$SeparateProcessService" android:process=":filedownloader"/>
+    </application>
+</manifest>
