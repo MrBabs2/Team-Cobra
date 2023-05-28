@@ -1,0 +1,19 @@
+package p015cm.aptoide.p016pt.install;
+
+import p015cm.aptoide.p016pt.crashreports.CrashReport;
+import p123rx.p126m.C5378b;
+
+/* renamed from: cm.aptoide.pt.install.c2 */
+/* compiled from: lambda */
+public final /* synthetic */ class C3261c2 implements C5378b {
+
+    /* renamed from: f */
+    public static final /* synthetic */ C3261c2 f6189f = new C3261c2();
+
+    private /* synthetic */ C3261c2() {
+    }
+
+    public final void call(Object obj) {
+        CrashReport.getInstance().log((Throwable) obj);
+    }
+}

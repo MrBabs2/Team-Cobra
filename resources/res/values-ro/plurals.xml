@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="timeline_short_comment">
+        <item quantity="one">1 comentariu</item>
+        <item quantity="few">%d comentarii</item>
+        <item quantity="other">%d comentarii</item>
+    </plurals>
+    <plurals name="updates_notification_body">
+        <item quantity="one">Ai %d actualizare gata de instalat</item>
+        <item quantity="few">Ai %d actualizări gata de instalat</item>
+        <item quantity="other">Ai %d actualizări gata de instalat</item>
+    </plurals>
+</resources>
